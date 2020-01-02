@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+
+/*
+Extra small(xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px){...} 
+
+Medium (md) devices (tablets,768px and up)
+@media (min-width: 768px){...} 
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px){...} 
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px){...} 
+*/
+.dropdown-toggle{
+    padding-top: 10px;
+    color: black;
+}
+.btn-sign-in{
+    background-color: white;
+    color: black;
+    border-color: black;
+    font-weight: 500;
+}
+.btn-red{
+    background-color: #fc2b63;
+    color: white;
+    border-color: #fc2b63;
+    font-weight: 500;
+}
+.title {
+    padding-bottom: 100px;
+}
+.title-text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 400%;
+}
+.title-paragraph{
+    text-align: center;
+    font-size: 125%;
+}
+.green-text{
+    color: #7ff58f;
+    font-weight: bold;
+}
+.red-text{
+    color: #fc2b63;
+    font-weight: bold;
+}
+.move-down-50{
+    padding-top: 50px;
+}
+.move-down-80{
+    padding-top: 80px;
+}
+.move-down-150{
+    padding-top:150px;
+}
+.block-one{
+    padding-left: 25px;
+}
+.btn-white{
+    background-color: white;
+    color: #fc2b63;
+    border-color: white;
+    font-weight: 500;
+}
+.btn-pink{
+    background-color:#ffebfa;
+    border-color: #ffebfa;
+    color:black;
+    font-weight: 500;
+}
+.btn-pink-red{
+    background-color:#ffebfa;
+    border-color: #ffebfa;
+    color:#fc2b63;
+    font-weight: 500;
+}
+.img-text-bold{
+    font-weight: bold;
+}
+.orange{
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #ffebfa;
+}
+.white{
+    background-color: white;
+}
+.image-top{
+    position:relative;
+    top: -75px;
+}
+.image-left{
+    position:relative;
+    left: -25px;
+    top: -71px;
+}
+
+.limited{
+    width: 750px;
+    height: 200px;
+}
+
+.empty-padding{
+    padding-top:120px;
+}
+.footer-link {
+    color: gray;
+  }

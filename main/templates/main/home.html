@@ -1,0 +1,222 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/release/v5.0.8/js/all.js"></script>
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <!-- Navigation -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-2">
+                <img src="/media/Logo.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">For whom</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">Sign In</a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red">Start for free</a>
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Title -->
+    <div class="title">
+        <h1 class="title-text">Online chemistry</h1>
+        <h1 class="title-text">and physics school</h1>
+        <br/>
+        <div class="row text-center ">
+            <p class="title-paragraph">We make learning interesting and exciting. We teach to think
+                and understand how things work. We help to apply knowledge
+                in practice and daily ilfe.
+            </p>
+        </div>
+    </div>
+
+    <!-- Image 1 -->
+    <div class="container-fluid padding orange">
+        <div class="row padding">
+            <div class="col-lg-8 block-one">
+                <h2 class="green-text">For student</h2>
+                <h2 class="img-text-bold" >to improve academic</h2>
+                <h2 class="img-text-bold">performance and put into practice</h2">
+                <br/>
+                <br/>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-white">Get Started</a>
+                <a href="#" class="btn btn-primary btn-pink">In more detail</a>
+            </div>
+
+            <div class="col-lg-4">
+                <img class="image-top" src="/media/Frame_1.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 2 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6">
+                <img src="/media/Frame_2.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 move-down-150">
+                <h2 class="red-text">Learn chemistry and physics</h2>
+                <h2 class="img-text-bold">using a computer</h2>
+                <h2 class="img-text-bold">or smartphone</h2>
+            </div>
+        
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 3 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6 move-down-80">
+                <h2 class="red-text">We monitor your progress,</h2>
+                <h2 class="img-text-bold">analyze and correct</h2>
+                <h2 class="img-text-bold">mistakes, send you the</h2>
+                <h2 class="img-text-bold">results of</h2>
+                <h2 class="img-text-bold">your performance</h2>
+            </div>
+            <div class="col-lg-6">
+                <img src="/media/Frame_3.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 4 -->
+    <div class="container-fluid padding orange">
+        <div class="row padding">
+            <div class="col-lg-8 block-one">
+                <h2 class="img-text-bold" >The trust should be built</h2>
+                <h2 class="img-text-bold">between the teacher</h2>
+                <h2 class="img-text-bold">and the student</h2>
+                <br/>
+                <br/>
+                <h5>We select teachers with</h5>
+                <h5>common interests and goals</h5>
+                <br/>
+                <a href="#" class="btn btn-primary btn-red">Submit application</a>
+            </div>
+            <div class="col-lg-4">
+                <img  src="/media/Frame_4.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 5 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6">
+                <img src="/media/Frame_5.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 move-down-50">
+                <h2 class="red-text">The first lesson is free</h2>
+                <h2 class="img-text-bold">to understand your wishes</h2>
+                <h2 class="img-text-bold">and needs</h2>
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 6 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6">
+                <img src="/media/Frame_6.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 move-down-50">
+                <h2 class="red-text">A unique online school</h2>
+                <h2 class="img-text-bold">with cool educators who</h2>
+                <h2 class="img-text-bold">understand the psychology</h2>
+                <h2 class="img-text-bold">of people. Students trust us.</h2>
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 7 -->
+    <div class="container-fluid padding orange">
+        <div class="row padding">
+            <div class="col-lg-6 block-one">
+                <h2 class="red-text">The 1st intro</h2>
+                <h2 class="red-text">lesson is free</h2>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <h5>to clarify your expectations</h5>
+                <h5>to take account of your wishes</h5>
+                <h5>to determine your level</h5>
+            </div>
+            <div class="col-lg-3 white limited">
+                <h2 class="img-text-bold">For students</h2>
+                <h5>to improve academic</h5>
+                <h5>performance and prepare</h5>
+                <h5>for exams</h5>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-pink-red">Get started</a>
+            </div>
+            <div class="col-lg-3">
+                <img class="image-left" src="/media/Frame_7.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-left">
+                <div class="col-md-4">
+                    <img src="/media/footer.jpg">
+                </div>
+                <div class="col-md-4">
+                    <h5>Learning</h5>
+                    <a class="footer-link" href="#">Process</a>
+                    <br/>
+                    <a class="footer-link" href="#">Classes</a>
+                    <br/>
+                    <a class="footer-link" href="#">Educators</a>
+                    <br/>
+                    <a class="footer-link" href="#">QnA</a>
+                    <br/>
+                    <a class="footer-link" href="#">Price</a>
+                </div>
+                <div class="col-md-4">
+                    <h5>PRO2</h5>
+                    <a class="footer-link" href="#">About Company</a>
+                    <br/>
+                    <a class="footer-link" href="#">For educators</a>
+                    <br/>
+                    <a class="footer-link" href="#">Reviews</a>
+                    <br/>
+                    <a class="footer-link" href="#">Privacy policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="empty-padding"></div>
+{% endblock content %}
+

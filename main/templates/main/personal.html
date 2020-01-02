@@ -1,0 +1,65 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Personal Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/personal.css' %}">
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <div class="row padding">
+        <div class="col-lg-3 left-side">
+            <img src="/media/Logo.svg" class="img-fluid">
+            <br/>
+            <div class="media">
+                <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+            </div>
+            <h5 class="center">{{user.name}}</h5>
+            <a href="#" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png"> My account</a>
+            <br/>
+            <a href="#" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png"> Theory and practice</a>
+            <br/>
+            <a href="#" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png"> Homework</a>
+            <br/>
+            <a href="#" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png"> Tests</a>
+            <br/>
+            <a href="#" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png"> Formula</a>
+            <br/>
+        </div>
+        <div class="col-lg-9 right-side">
+            <h2>My Account</h2>
+            <div class="wrapper">
+                <div class="white-back">
+                    <h5 class="text-left header">SCHEDULE</h5>
+                    <h5 class="text-left">10:00<span class="tab">Monday, 16 December</span></h5>
+                    <h5 class="text-left">10:00<span class="tab">Wednesday, 18 December</span></h5>
+                    <h5 class="text-left">10:00<span class="tab">Friday, 20 December</span></h5>
+                </div>
+                <div class="media white-back">
+                    <img class="rounded-circle account-img custom-img-small" src="/media/default.jpg">
+                    <h5>  Ivanov P.S.</h5>
+                    <span class="tab"></span>
+                    
+                </div>
+                <br/>
+                <div class="result white-back">
+                    <h5 class="text-left header">RESULTS OF PERFORMANCE</h5>
+                </div>
+                <div class="result white-back">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Personal Info</legend>
+                            {{ p_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
