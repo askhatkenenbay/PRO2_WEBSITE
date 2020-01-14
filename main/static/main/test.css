@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Museo Sans Cyrl 500';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Museo Sans Cyrl 500'), url('/main/static/main/museosanscyrl-500.woff') format('woff');
+}
+
+body{
+    background-color: #faf9eb;
+}
+
+.photo{
+    width: 120px;
+    height: 120px;
+    left: 490px;
+    top: 114px;
+    padding-top: 25px;
+}
+
+.custom-img{
+    max-height: 200px;
+    max-width: 200px;
+    width: 70%;
+    height: 70%;
+    width: auto;
+    position:relative;
+    left: +100px;
+}
+
+.custom-img-xs{
+    max-height: 15px;
+    max-width: 15px;
+    width: 70%;
+    height: 70%;
+    width: auto;  
+    position:relative;
+    top: +1px;
+}
+
+.center{
+    text-align: center;
+}
+
+.btn-custom{
+    background-color: #faf9eb;
+    color: gray;
+    border-color: #faf9eb;
+    position: static;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    align-self: center;
+    /*margin: 14px 0px;*/
+}
+
+.btn-custom:hover {
+    background-color: white;
+    color: #fc2b63;
+    border-color: white;
+    font-weight: 500;
+}
+.btn-custom:active{
+    background-color: white;
+    color: #fc2b63;
+    border-color: white;
+    font-weight: 500;
+    border-color:  #faf9eb;
+    box-shadow: none;
+}
+
+.btn-red{
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    /* Основной */
+    background: #F04B5D;
+    border-radius: 6px;
+}
+
+.title{
+    left: 39.32%;
+    right: 47.19%;
+    top: 1.24%;
+    bottom: 97.15%;
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    /* Черный */
+    color: #222224;
+}
+
+.wrapper{
+    display: grid;
+    grid-gap:1em;
+    grid-template-columns: 33% 33% 33%;
+}
+.wrapper > div {
+    padding: 1em;
+}
+
+.box{
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    /* Белый */
+    background: #FFFFFF;
+    border-radius: 6px;
+    padding-bottom: 15px;
+}
+.percentage{
+    /*position: absolute;
+    width: 37px;
+    height: 22px;*/
+    left: 22px;
+    top: 20px;
+    
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    
+    /* Черный */
+    
+    color: #222224;
+}
+.better{
+    left: 22px;
+    top: 43px;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    /* Серый 1 */
+
+    color: #424754;
+}

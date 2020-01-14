@@ -20,8 +20,8 @@
                 <img src="/media/Logo.svg" class="img-fluid">
             </div>
             <div class="col-lg-2">
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">For whom</a>
+                <div class="dropdown for-whom">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">For whom</a>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">Action</a>
                         <a href="#" class="dropdown-item">Another action</a>
@@ -30,7 +30,7 @@
                 
             </div>
             <div class="col-lg-2">
-                <div class="dropdown">
+                <div class="dropdown our-courses">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">Action</a>
@@ -39,12 +39,25 @@
                 </div>
             </div>
             <div class="col-lg-2"></div>
-            <div class="col-lg-2">
-                <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">Sign In</a>
+            {% if user.is_authenticated %}
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2 ">
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">Logout</h2>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-lg-2 ">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">Sign In</h2>
+                </a>
             </div>
             <div class="col-lg-2">
-                <a href="{% url 'register' %}" class="btn btn-primary btn-red">Start for free</a>
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red">
+                    <h2 class="btn-red-text">Start for free</h2>
+                </a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="empty-padding"></div>
@@ -112,24 +125,24 @@
     </div>
     <div class="empty-padding"></div>
     <!-- Image 4 -->
-    <div class="container-fluid padding orange">
+    <div id="four"  >
         <div class="row padding">
             <div class="col-lg-8 block-one">
-                <h2 class="img-text-bold" >The trust should be built</h2>
-                <h2 class="img-text-bold">between the teacher</h2>
-                <h2 class="img-text-bold">and the student</h2>
+                <h2 class="img-text-bold-4 move-down-50" >The trust should be built</h2>
+                <h2 class="img-text-bold-4">between the teacher</h2>
+                <h2 class="img-text-bold-4">and the student</h2>
                 <br/>
                 <br/>
-                <h5>We select teachers with</h5>
-                <h5>common interests and goals</h5>
+                <h5 class="img-4-text">We select teachers with</h5>
+                <h5 class="img-4-text">common interests and goals</h5>
                 <br/>
-                <a href="#" class="btn btn-primary btn-red">Submit application</a>
+                <a href="#" class="btn btn-primary btn-red-submit">Submit application</a>
             </div>
             <div class="col-lg-4">
-                <img  src="/media/Frame_4.svg" class="img-fluid">
+                <img  src="/media/Frame_4.svg" class="img-fluid img4">
             </div>
         </div>
-    </div>
+    </divid="four">
     <div class="empty-padding"></div>
     <!-- Image 5 -->
     <div class="container-fluid padding">
@@ -148,21 +161,21 @@
     <!-- Image 6 -->
     <div class="container-fluid padding">
         <div class="row padding">
-            <div class="col-lg-6">
-                <img src="/media/Frame_6.svg" class="img-fluid">
-            </div>
             <div class="col-lg-6 move-down-50">
                 <h2 class="red-text">A unique online school</h2>
                 <h2 class="img-text-bold">with cool educators who</h2>
                 <h2 class="img-text-bold">understand the psychology</h2>
                 <h2 class="img-text-bold">of people. Students trust us.</h2>
             </div>
+            <div class="col-lg-6">
+                <img src="/media/Frame_6.svg" class="img-fluid">
+            </div>
         </div>
     </div>
     <div class="empty-padding"></div>
     <!-- Image 7 -->
-    <div class="container-fluid padding orange">
-        <div class="row padding">
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0">
             <div class="col-lg-6 block-one">
                 <h2 class="red-text">The 1st intro</h2>
                 <h2 class="red-text">lesson is free</h2>

@@ -1,0 +1,52 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/homeworkNext.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row padding">
+    <div class="col-lg-3 left-side">
+        <img src="/media/Logo.svg" class="img-fluid">
+        <br/>
+        <div class="media photo">
+            <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+        </div>
+        <h5 class="center">{{user.name}}</h5>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; My account</a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Theory and practice</a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Homework</a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Tests</a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Formula</a>
+    </div>
+    <div class="col-lg-8 right-side">
+            <h4 class="title">Homework</h4>
+            <div class="main-box">
+                <h5 class="topic">Topic 1</h5>
+                <h2 class="topic-header">Pure substances and mixtures</h2>
+                <br/>
+                <h5 class="idea">Homework</h5>
+                <br/>
+                <div class="wrapper">
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;Substances that make up the mixture
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;If no impurities are detected
+                    </h4>
+                </div>
+                <br/>
+                <h4 class="inside-text">The law on the relative velocity of the outflow of various gases through a porous surface or artificial membrane under the same conditions. Discovered in 1829 by the Scottish chemist Thomas Graham.</h4>
+            </div>
+    </div>
+    <div class="col-lg-1">
+        <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">Logout</a>
+    </div>
+</div>
+{% endblock content %}

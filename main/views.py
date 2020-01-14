@@ -26,3 +26,27 @@ def personal_page(request):
         'p_form': p_form
     }
     return render(request, 'main/personal.html', context)
+
+@login_required
+def theory(request):
+    return render(request, 'main/theory.html')
+    
+@login_required
+def practice(request):
+    return render(request, 'main/practice.html')
+
+@login_required
+def homework(request):
+    return render(request, 'main/homework.html')
+
+@login_required
+def test(request):
+    return render(request, 'main/test.html')
+
+@login_required
+def formula(request):
+    return render(request, 'main/formula.html')
+
+@login_required
+def homeworkNext(request):
+    return render(request, 'main/homeworkNext.html')

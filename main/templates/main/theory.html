@@ -1,0 +1,179 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/theory.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row padding">
+    <div class="col-lg-3 left-side">
+        <img src="/media/Logo.svg" class="img-fluid">
+        <br/>
+        <div class="media photo">
+            <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+        </div>
+        <h5 class="center">{{user.name}}</h5>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; My account</a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Theory and practice</a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Homework</a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Tests</a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Formula</a>
+    </div>
+    <div class="col-lg-8 right-side">
+            <h4 class="title">Theory and practice</h4>
+            <div class="wrapper">
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 1
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 2
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 3
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 4
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 5
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 6
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 7
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 8
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 9
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 10
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 11
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 12
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 13
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 14
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 15
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 16
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 17
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+                <a href="{% url 'practice' %}" class="box">
+                    <h3 class="topic">
+                          Topic 18
+                     </h3>
+                    <p class="information">
+                        Pure substances and mixtures
+                    </p>
+                </a>
+            </div>
+    </div>
+    <div class="col-lg-1">
+        <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">Logout</a>
+    </div>
+</div>
+{% endblock content %}

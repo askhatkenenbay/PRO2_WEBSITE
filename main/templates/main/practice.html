@@ -1,0 +1,166 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/practice.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row padding">
+    <div class="col-lg-3 left-side">
+        <img src="/media/Logo.svg" class="img-fluid">
+        <br/>
+        <div class="media photo">
+            <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+        </div>
+        <h5 class="center">{{user.name}}</h5>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; My account</a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Theory and practice</a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Homework</a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Tests</a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Formula</a>
+    </div>
+    <div class="col-lg-8 right-side">
+            <h4 class="title">Theory and practice</h4>
+            <div class="main-box">
+                <h5 class="topic">Topic 1</h5>
+                <h2 class="topic-header">Pure substances and mixtures</h2>
+                <br/>
+                <h5 class="idea">Essential ideas</h5>
+                <h4 class="inside-text">
+                    <span class="dot"></span>
+                    &ensp;Substances that make up the mixture
+                </h4>
+                <h4 class="inside-text">
+                    <span class="dot"></span>
+                    &ensp;If impurities are not detected when using the substance for technical purposes, then the substance is called technically pure.
+                </h4>
+                <h4 class="inside-text">
+                    <span class="dot"></span>
+                    &ensp;A pure substance is sometimes called an individual substance, because it has strictly defined properties. For example, only distilled water has a melting point of 0 ° C, a boiling point of 100 ° C, and has no taste or smell.
+                </h4>
+                <h4 class="inside-text">
+                    <span class="dot"></span>
+                    &ensp;Substances that make up the mixture
+                </h4>
+                <h4 class="inside-text">
+                    <span class="dot"></span>
+                    &ensp;If impurities are not detected when using
+                </h4>
+
+                <h5 class="idea">Understandings</h5>
+                <div class="wrapper">
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;Substances that make up the mixture   
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;For example, only distilled water
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;If no impurities are detected
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;Substances that make up the mixture
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;If no impurities are detected
+                    </h4>
+                </div>
+
+                <h5 class="idea">Applications and skills</h5>
+                <div class="wrapper">
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;Substances that make up the mixture
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;For example, only distilled water
+                    </h4>
+                    <h4 class="inside-text">
+                        <span class="dot"></span>
+                        &ensp;If no impurities are detected
+                    </h4>
+                </div>
+
+                <h5 class="idea">Graphs</h5>
+                <img src="/media/graph.jpg">
+
+                <h5 class="idea">Formulas</h5>
+                <br/>
+                <div class="wrapper">
+                    <div class="formula-box">
+                        <h4 class="formula-header">
+                            The amount of substance n (mol)
+                        </h4>
+                        <h3 class="formula-text">
+                            n=m/Mr
+                        </h3>
+                        <h5 class="formula-footer">
+                            n=V/22.4 (л/моль)
+                        </h5>
+                    </div>
+                    <div class="formula-box">
+                        <h4 class="formula-header">
+                            The amount of substance n (mol)
+                        </h4>
+                        <h3 class="formula-text">
+                            n=m/Mr
+                        </h3>
+                        <h5 class="formula-footer">
+                            n=V/22.4 (л/моль)
+                        </h5>
+                    </div>
+                    <div class="formula-box">
+                        <h4 class="formula-header">
+                            The amount of substance n (mol)
+                        </h4>
+                        <h3 class="formula-text">
+                            n=m/Mr
+                        </h3>
+                        <h5 class="formula-footer">
+                            n=V/22.4 (л/моль)
+                        </h5>
+                    </div>
+                </div>
+
+                <h5 class="idea">Laws</h5>
+                <div class="law-column">
+                    <div class="row padding">
+                        <div class="col-lg-3">
+                            <h3 class="law-name">
+                                Henry - Dalton Law
+                            </h3>
+                            <a href="#" class="more-details">More details</a>
+                        </div>
+                        <div class="col-lg-9">
+                            <h4 class="inside-text">The law according to which at a constant temperature the solubility of a gas in a given liquid is directly proportional to the pressure of this gas above the solution. The law is suitable only for ideal solutions and low pressures.</h4>
+                        </div>
+                    </div>
+                    <div class="row padding">
+                        <div class="col-lg-3">
+                            <h3 class="law-name">
+                                Graham's Law
+                            </h3>
+                            <a href="#" class="more-details">More details</a>
+                        </div>
+                        <div class="col-lg-9">
+                            <h4 class="inside-text">The law on the relative velocity of the outflow of various gases through a porous surface or artificial membrane under the same conditions. Discovered in 1829 by the Scottish chemist Thomas Graham.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="col-lg-1">
+        <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">Logout</a>
+    </div>
+</div>
+{% endblock content %}

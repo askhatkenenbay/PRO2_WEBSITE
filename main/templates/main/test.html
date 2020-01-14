@@ -1,0 +1,119 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/test.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row padding">
+    <div class="col-lg-3 left-side">
+        <img src="/media/Logo.svg" class="img-fluid">
+        <br/>
+        <div class="media photo">
+            <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+        </div>
+        <h5 class="center">{{user.name}}</h5>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; My account</a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Theory and practice</a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Homework</a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Tests</a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Formula</a>
+    </div>
+    <div class="col-lg-8 right-side">
+            <h4 class="title">Tests</h4>
+            <div class="wrapper">
+                <div class="box">
+                  <h3 class="percentage">85%</h3>
+                  <h4 class="better">better than 85% of students</h4>
+                  <h3 class="percentage">Pure substances and mixtures</h3>
+                  <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                  <a href="#" class="">Take the test</a>
+                </div>
+                <div class="box">
+                    <h3 class="percentage">85%</h3>
+                    <h4 class="better">better than 85% of students</h4>
+                    <h3 class="percentage">Pure substances and mixtures</h3>
+                    <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                    <a href="#" class="">Take the test</a>
+                </div>
+                <div class="box">
+                    <h3 class="percentage">85%</h3>
+                    <h4 class="better">better than 85% of students</h4>
+                    <h3 class="percentage">Pure substances and mixtures</h3>
+                    <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                    <a href="#" class="">Take the test</a>
+                </div>
+                <div class="box">
+                    <h3 class="percentage">85%</h3>
+                    <h4 class="better">better than 85% of students</h4>
+                    <h3 class="percentage">Pure substances and mixtures</h3>
+                    <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                    <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                    <h3 class="percentage">85%</h3>
+                    <h4 class="better">better than 85% of students</h4>
+                    <h3 class="percentage">Pure substances and mixtures</h3>
+                    <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                    <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                    <h3 class="percentage">85%</h3>
+                    <h4 class="better">better than 85% of students</h4>
+                    <h3 class="percentage">Pure substances and mixtures</h3>
+                    <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                    <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+                  <div class="box">
+                      <h3 class="percentage">85%</h3>
+                      <h4 class="better">better than 85% of students</h4>
+                      <h3 class="percentage">Pure substances and mixtures</h3>
+                      <h4 class="better">21 questions&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~5:25</h4>
+                      <a href="#" class="">Take the test</a>
+                  </div>
+            </div>
+    </div>
+    <div class="col-lg-1">
+        <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">Logout</a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,6 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-
+@font-face {
+    font-family: 'Museo Sans Cyrl 500';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Museo Sans Cyrl 500'), url('/main/static/main/museosanscyrl-500.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Museo Sans Cyrl 500 Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Museo Sans Cyrl 500 Italic'), url('/main/static/main/museosanscyrl-500italic.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Museo Sans Cyrl 300';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Museo Sans Cyrl 300'), url('/main/static/main/museosanscyrl-300.woff.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Museo Sans Cyrl 300 Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Museo Sans Cyrl 300 Italic'), url('/main/static/main/museosanscyrl-300italic.woff.woff') format('woff');
+    }
+    
+    
+    
 /*
 Extra small(xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
@@ -17,41 +49,217 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px){...} 
 */
+
+.for-whom{
+    /* For whom */
+    position: static;
+    left: 1.11%;
+    right: 15.56%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    /* Серый 2 */
+
+    color: #505257;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 7px 0px;
+
+}
+.our-courses{
+    position: static;
+    left: 0.95%;
+    right: 13.33%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    /* Серый 2 */
+
+    color: #505257;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 7px 0px;
+}
 .dropdown-toggle{
     padding-top: 10px;
     color: black;
 }
 .btn-sign-in{
-    background-color: white;
-    color: black;
-    border-color: black;
-    font-weight: 500;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+
+    /* Белый */
+
+    background: #FFFFFF;
+    /* Gray 4 */
+
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 125px;
+}
+.sign-in-text{
+    position: absolute;
+    width: 45px;
+    height: 17px;
+    left: calc(50% - 45px/2 + 0.5px);
+    top: calc(50% - 17px/2 + 0.5px);
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Gray 1 */
+    color: #333333;
 }
 .btn-red{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+
+    /* Основной */
+
+    background: #F04B5D;
+    border-radius: 6px;
+}
+.btn-red-submit{
     background-color: #fc2b63;
     color: white;
     border-color: #fc2b63;
     font-weight: 500;
 }
+.btn-red-text{
+    position: absolute;
+    width: 84px;
+    height: 17px;
+    left: calc(50% - 84px/2);
+    top: calc(50% - 17px/2 + 0.5px);
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Белый */
+
+    color: #FFFFFF;
+}
 .title {
     padding-bottom: 100px;
 }
 .title-text{
+    left: 24.95%;
+    right: 24.95%;
+    top: 2.85%;
+    bottom: 93.93%;
+
     text-align: center;
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
     font-weight: bold;
-    font-size: 400%;
+    font-size: 80px;
+    line-height: 84px;
 }
 .title-paragraph{
+    left: 29.06%;
+    right: 29.11%;
+    top: 6.87%;
+    bottom: 91.18%;
+
+    font-family: Museo Sans Cyrl;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 34px;
+    /* or 142% */
+
     text-align: center;
-    font-size: 125%;
+
+    /* Серый 2 */
+
+    color: #505257;
+
 }
 .green-text{
-    color: #7ff58f;
+    /* For student */
+    left: 28.39%;
+    right: 46.88%;
+    top: 12.25%;
+    bottom: 87.01%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
     font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+
+    /* Green 3 */
+    color: #6FCF97;
 }
 .red-text{
-    color: #fc2b63;
+    left: 28.39%;
+    right: 42.45%;
+    top: 13.07%;
+    bottom: 85.46%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
     font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+
+    /* Черный */
+
+    color: #F04B5D;
 }
 .move-down-50{
     padding-top: 50px;
@@ -67,15 +275,28 @@ Extra (xl) large devices (large desktops, 1200px and up)
 }
 .btn-white{
     background-color: white;
-    color: #fc2b63;
     border-color: white;
-    font-weight: 500;
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+/* identical to box height */
+
+    padding: 10px 50px;
+    text-align: center;
+
+/* Основной */
+
+color: #F04B5D;
 }
 .btn-pink{
-    background-color:#ffebfa;
-    border-color: #ffebfa;
-    color:black;
+    background-color: #FDF0E5;
+    border-color: #FDF0E5;
+    color: #505257; 
     font-weight: 500;
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal; 
+    text-align: center;padding: 10px 40px;
 }
 .btn-pink-red{
     background-color:#ffebfa;
@@ -84,26 +305,61 @@ Extra (xl) large devices (large desktops, 1200px and up)
     font-weight: 500;
 }
 .img-text-bold{
+    left: 28.39%;
+    right: 42.45%;
+    top: 13.07%;
+    bottom: 85.46%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
     font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+
+    /* Черный */
+
+    color: #222224;
 }
-.orange{
-    border-radius: 15px;
-    padding: 20px;
-    background-color: #ffebfa;
+.img-text-bold-4{
+    left: 24.48%;
+    right: 54.17%;
+    top: 51.34%;
+    bottom: 46.44%;
+
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+
+    align-items: center;
+
+    /* Черный */
+
+    color: #222224;
+}
+
+.orange-full{
+    width: 100%;
+    background: #FDF0E5;
 }
 .white{
     background-color: white;
 }
 .image-top{
     position:relative;
-    top: -75px;
+    top: -54px;
 }
 .image-left{
     position:relative;
     left: -25px;
     top: -71px;
 }
-
+.img4{
+    position:relative;
+    left: -75px;
+    top: +155px;
+}
 .limited{
     width: 750px;
     height: 200px;
@@ -114,4 +370,31 @@ Extra (xl) large devices (large desktops, 1200px and up)
 }
 .footer-link {
     color: gray;
-  }
+}
+.img-4-text{
+    font-family: Museo Sans Cyrl 300;
+    font-style: normal;
+
+
+    /* Черный */
+
+    color: #222224;
+}
+.orange{
+    width: 920px;
+    height: 317px;
+    left: 500px;
+    top: 598px;
+
+    background: #FDF0E5;
+    border-radius: 6px;
+}
+
+#four{
+    width: 1110px;
+    height: 444px;
+    left: 405px;
+    top: 2601px;
+    background: #FDF0E5;
+    border-radius: 6px;
+}
