@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block title %}
     <title>Logout Page</title>
@@ -7,12 +8,23 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <legend>Logout</legend>
-        <h2>You have been logged out</h2>
+        <legend>
+            <span class="en-text">Logout</span>
+            <span class = 'ru-text'>Выйти</span>
+            
+        </legend>
+        <h2>
+            <span class="en-text">You have been logged out</span>
+            <span class = 'ru-text'>Вы вышли из системы</span>
+        </h2>
         <div class="border-top pt-3">
             <small class="text-muted">
-                <a class="ml-2" href="{% url 'login' %}">Log In again</a>
+                <a class="ml-2" href="{% url 'login' %}">
+                    <span class="en-text">Log In again</span>
+                    <span class = 'ru-text'>Войдите снова</span>
+                </a>
             </small>
         </div>
     </form>
+    <script src="{% static 'users/change_language.js' %}"></script>
 {% endblock content %}

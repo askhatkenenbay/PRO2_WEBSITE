@@ -2,9 +2,10 @@
 {% load static %}
 {% block title %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Main Page</title>
+    <title>
+        Main Page
+    </title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -12,6 +13,17 @@
 {% endblock %}
 
 {% block content %}
+    <br/>
+    <footer class="footer">
+        <div class="row padding">
+            <div class="col-lg-10">
+            </div>
+            <div class="col-lg-2">
+                <button class="language"  onclick="change_lan('EN')">English</a>
+                    <button class="language" onclick="change_lan('RU')">Русский</a>
+            </div>
+        </div>
+    </footer>
     <br/>
     <!-- Navigation -->
     <div class="container-fluid padding">
@@ -38,23 +50,40 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+            </div>
             {% if user.is_authenticated %}
-            <div class="col-lg-2"></div>
-            <div class="col-lg-2 ">
+            <div class="col-lg-2">
                 <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
-                    <h2 class="sign-in-text">Logout</h2>
+                    <h2 class="sign-in-text">
+                        <span class="en-text">Logout</span>
+                        <span class = 'ru-text'>Выйти</span>
+                    </h2>
+                </a>
+            </div>
+            <div class="col-lg-2 ">
+                <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="to-home-text">
+                        <span class = 'en-text'>Back to account</span>
+                        <span class = 'ru-text'>Вернуться</span>
+                    </h2>
                 </a>
             </div>
             {% else %}
             <div class="col-lg-2 ">
                 <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
-                    <h2 class="sign-in-text">Sign In</h2>
+                    <h2 class="sign-in-text">
+                        <span class = 'en-text'>Sign in</span>
+                        <span class = 'ru-text'>Войти</span>
+                    </h2>
                 </a>
             </div>
             <div class="col-lg-2">
                 <a href="{% url 'register' %}" class="btn btn-primary btn-red">
-                    <h2 class="btn-red-text">Start for free</h2>
+                    <h2 class="btn-red-text">
+                        <span class = 'en-text'>Start for free</span>
+                        <span class = 'ru-text'>Начать бесплатно</span>
+                    </h2>
                 </a>
             </div>
             {% endif %}
@@ -63,13 +92,23 @@
     <div class="empty-padding"></div>
     <!-- Title -->
     <div class="title">
-        <h1 class="title-text">Online chemistry</h1>
-        <h1 class="title-text">and physics school</h1>
+        <h1 class="title-text">
+            <span class = 'en-text'>Online Chemistry</span>
+            <span class = 'ru-text'>Онлайн-школа</span>
+        </h1>
+        <h1 class="title-text">
+            <span class = 'en-text'>and physics school</span>
+            <span class = 'ru-text'>по химии и физике</span>
+        </h1>
         <br/>
         <div class="row text-center ">
-            <p class="title-paragraph">We make learning interesting and exciting. We teach to think
+            <p class="title-paragraph"><span class="en-text"> We make learning interesting and exciting. We teach to think
                 and understand how things work. We help to apply knowledge
-                in practice and daily life.
+                in practice and daily life.</span>
+                <span class="ru-text">
+                    Делаем обучение интересным и захватывающим. Учим думать и видеть
+                    суть вещей. Помогаем применить полученные знания на практике и в жизни.
+                </span>
             </p>
         </div>
     </div>
@@ -78,13 +117,28 @@
     <div class="container-fluid padding orange">
         <div class="row padding">
             <div class="col-lg-8 block-one">
-                <h2 class="green-text">For student</h2>
-                <h2 class="img-text-bold" >to improve academic</h2>
-                <h2 class="img-text-bold">performance and apply knowledge in practice</h2">
+                <h2 class="green-text">
+                    <span class="en-text">For student</span>
+                    <span class="ru-text">Школьникам и студентам</span>
+                </h2>
+                <h2 class="img-text-bold" >
+                    <span class="en-text">to improve academic</span>
+                    <span class = 'ru-text'>для повышения успеваемости</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">performance and apply knowledge in practice</span>
+                    <span class = 'ru-text'>и применения знаний на практике</span>
+                </h2">
                 <br/>
                 <br/>
-                <a href="{% url 'login' %}" class="btn btn-primary btn-white">Get Started</a>
-                <a href="#" class="btn btn-primary btn-pink">In more detail</a>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-white">
+                    <span class="en-text">Get Started</span>
+                    <span class = 'ru-text'>Оставить заявку</span>
+                </a>
+                <a href="#" class="btn btn-primary btn-pink">
+                    <span class="en-text">In more detail</span>
+                    <span class = 'ru-text'>Подробнее</span>
+                </a>
             </div>
 
             <div class="col-lg-4">
@@ -100,9 +154,21 @@
                 <img src="/media/Frame_2.svg" class="img-fluid">
             </div>
             <div class="col-lg-6 move-down-150">
-                <h2 class="red-text">Learn chemistry and physics</h2>
-                <h2 class="img-text-bold">using computer</h2>
-                <h2 class="img-text-bold">or smartphone</h2>
+                <h2 class="red-text">
+                    <span class="en-text">Learn chemistry and physics</span>
+                    <span class = 'ru-text'>Изучайте химию и физику</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">using computer</span>
+                    <span class = 'ru-text'>в удобном для вас формате,</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">or smartphone</span>
+                    <span class = 'ru-text'>используя компьютер или</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class = 'ru-text'>смартфон</span>
+                </h2>
             </div>
         
         </div>
@@ -112,11 +178,26 @@
     <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-lg-6 move-down-80">
-                <h2 class="red-text">We monitor your progress,</h2>
-                <h2 class="img-text-bold">analyze and correct</h2>
-                <h2 class="img-text-bold">mistakes, send you the</h2>
-                <h2 class="img-text-bold">results of</h2>
-                <h2 class="img-text-bold">your performance</h2>
+                <h2 class="red-text">
+                    <span class="en-text">We monitor your progress,</span>
+                    <span class = 'ru-text'>Следим за вашим прогрессом,</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">analyze and correct</span>
+                    <span class = 'ru-text'>анализируем</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">mistakes send you the</span>
+                    <span class = 'ru-text'>и исправляем ошибки,</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">results of</span>
+                    <span class = 'ru-text'>присылаем результаты</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">your performance</span>
+                    <span class = 'ru-text'>проведения занятий</span>
+                </h2>
             </div>
             <div class="col-lg-6">
                 <img src="/media/Frame_3.svg" class="img-fluid">
@@ -128,15 +209,36 @@
     <div id="four"  >
         <div class="row padding">
             <div class="col-lg-8 block-one">
-                <h2 class="img-text-bold-4 move-down-50" >The trust should be built</h2>
-                <h2 class="img-text-bold-4">between the teacher</h2>
-                <h2 class="img-text-bold-4">and the student</h2>
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Между педагогом</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>и учеником должна</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">and the student</span>
+                    <span class = 'ru-text'>возникнуть &lt;&lt;химия&gt;&gt;</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class = 'ru-text'>и &lt;&lt;симпатия&gt;&gt;.</span>
+                </h2>
                 <br/>
                 <br/>
-                <h5 class="img-4-text">We select teachers with</h5>
-                <h5 class="img-4-text">common interests and goals</h5>
+                <h5 class="img-4-text">
+                    <span class="en-text">We select teachers with</span>
+                    <span class = 'ru-text'>Подбираем педагогов с общими</span>
+                </h5>
+                <h5 class="img-4-text">
+                    <span class="en-text">common interests and goals</span>
+                    <span class = 'ru-text'>интересами и целями.</span>
+                </h5>
                 <br/>
-                <a href="#" class="btn btn-primary btn-red-submit">Submit application</a>
+                <a href="#" class="btn btn-primary btn-red-submit">
+                    <span class="en-text">Submit application</span>
+                    <span class = 'ru-text'>Оставить заявку</span>
+                </a>
             </div>
             <div class="col-lg-4">
                 <img  src="/media/Frame_4.svg" class="img-fluid img4">
@@ -151,9 +253,21 @@
                 <img src="/media/Frame_5.svg" class="img-fluid">
             </div>
             <div class="col-lg-6 move-down-50">
-                <h2 class="red-text">The first lesson is free</h2>
-                <h2 class="img-text-bold">to understand your wishes</h2>
-                <h2 class="img-text-bold">and needs</h2>
+                <h2 class="red-text">
+                    <span class="en-text">The first lesson is free</span>
+                    <span class = 'ru-text'>Первый урок бесплатно,</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">to understand your wishes</span>
+                    <span class = 'ru-text'>чтобы понять, что вы</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">and needs</span>
+                    <span class = 'ru-text'>ожидаете от занятий</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class = 'ru-text'>и учесть ваши пожелания</span>
+                </h2>
             </div>
         </div>
     </div>
@@ -162,10 +276,25 @@
     <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-lg-6 move-down-50">
-                <h2 class="red-text">A unique online school</h2>
-                <h2 class="img-text-bold">with cool educators who</h2>
-                <h2 class="img-text-bold">understand the psychology</h2>
-                <h2 class="img-text-bold">of people. Students trust us.</h2>
+                <h2 class="red-text">
+                    <span class="en-text">A unique online school</span>
+                    <span class = 'ru-text'>Уникальная онлайн-школа</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">with cool educators who</span>
+                    <span class = 'ru-text'>с крутыми педагогами,</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">understand the psychology</span>
+                    <span class = 'ru-text'>знающими английский язык</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class="en-text">of people. Students trust us.</span>
+                    <span class = 'ru-text'>и понимающими психологию</span>
+                </h2>
+                <h2 class="img-text-bold">
+                    <span class = 'ru-text'>детей. Нам доверяют.</span>
+                </h2>
             </div>
             <div class="col-lg-6">
                 <img src="/media/Frame_6.svg" class="img-fluid">
@@ -177,22 +306,52 @@
     <div class="container-fluid padding ">
         <div class="row padding orange-full px-0">
             <div class="col-lg-6 block-one">
-                <h2 class="red-text">The 1st intro</h2>
-                <h2 class="red-text">lesson is free</h2>
+                <h2 class="red-text">
+                    <span class="en-text">The 1st intro</span>
+                    <span class = 'ru-text'>Вводный урок</span>
+                </h2>
+                <h2 class="red-text">
+                    <span class="en-text">lesson is free</span>
+                    <span class = 'ru-text'>бесплатно</span>
+                </h2>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
-                <h5>to clarify your expectations</h5>
-                <h5>to take account of your wishes</h5>
-                <h5>to determine your level</h5>
+                <h5>
+                    <span class="en-text">to clarify your expectations</span>
+                    <span class = 'ru-text'>Проясним ожидания</span>
+                </h5>
+                <h5>
+                    <span class="en-text">to take account of your wishes</span>
+                    <span class = 'ru-text'>Учтем пожелания</span>
+                </h5>
+                <h5>
+                    <span class="en-text">to determine your level</span>
+                    <span class = 'ru-text'>Определим уровень</span>
+                </h5>
             </div>
             <div class="col-lg-3 white limited">
-                <h2 class="img-text-bold">For students</h2>
-                <h5>to improve academic</h5>
-                <h5>performance and prepare</h5>
-                <h5>for exams</h5>
-                <a href="{% url 'login' %}" class="btn btn-primary btn-pink-red">Get started</a>
+                <h2 class="img-text-bold">
+                    <span class="en-text">For students</span>
+                    <span class = 'ru-text'>Школьникам</span>
+                </h2>
+                <h5>
+                    <span class="en-text">to improve academic</span>
+                    <span class = 'ru-text'>для повышения</span>
+                </h5>
+                <h5>
+                    <span class="en-text">performance and prepare</span>
+                    <span class = 'ru-text'>успеваемости</span>
+                </h5>
+                <h5>
+                    <span class="en-text">for exams</span>
+                    <span class = 'ru-text'>и подготовке к тестам</span>
+                </h5>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-pink-red">
+                    <span class="en-text">Get started</span>
+                    <span class = 'ru-text'>Оставить заявку</span>
+                </a>
             </div>
             <div class="col-lg-3">
                 <img class="image-left" src="/media/Frame_7.svg" class="img-fluid">
@@ -208,30 +367,65 @@
                     <img src="/media/footer.jpg">
                 </div>
                 <div class="col-md-4">
-                    <h5>Learning</h5>
-                    <a class="footer-link" href="#">Process</a>
+                    <h5>
+                        <span class="en-text">Learning</span>
+                        <span class = 'ru-text'>Обучение</span>
+                        
+                    </h5>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Process</span>
+                        <span class = 'ru-text'>Процесс</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">Classes</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Classes</span>
+                        <span class = 'ru-text'>Предметы</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">Educators</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Educators</span>
+                        <span class = 'ru-text'>Педагоги</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">QnA</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">QnA</span>
+                        <span class = 'ru-text'>Вопрос-ответ</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">Price</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Price</span>
+                        <span class = 'ru-text'>Цена</span>
+                    </a>
                 </div>
                 <div class="col-md-4">
-                    <h5>PRO2</h5>
-                    <a class="footer-link" href="#">About Company</a>
+                    <h5>
+                        <span class="en-text">PRO2</span>
+                        <span class = 'ru-text'>PRO2</span>
+                    </h5>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">About Company</span>
+                        <span class = 'ru-text'>О школе</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">For educators</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">For educators</span>
+                        <span class = 'ru-text'>Педагогам</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">Reviews</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Reviews</span>
+                        <span class = 'ru-text'>Отзывы</span>
+                    </a>
                     <br/>
-                    <a class="footer-link" href="#">Privacy policy</a>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Privacy policy</span>
+                        <span class = 'ru-text'>Конфиденциальность</span>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
     <div class="empty-padding"></div>
+    <script src="{% static 'main/change_language.js' %}"></script>
 {% endblock content %}
 

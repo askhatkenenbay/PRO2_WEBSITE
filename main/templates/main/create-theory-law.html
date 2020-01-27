@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Create Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/create_course.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+<form method="POST">
+    {% csrf_token %}
+    <legend>
+        <span class="en-text">Create Theory Law</span>
+        <span class = 'ru-text'>Create Theory Law</span>
+    </legend>
+    {{ form|crispy }}
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">
+            <span class="en-text">Register</span>
+            <span class = 'ru-text'>Register</span>
+        </button>
+    </div>
+    
+</form>
+    </div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <span class="en-text">Finished with Laws?</span>
+        <span class = 'ru-text'>Уже есть аккаунт?</span>
+        <a class="ml-2" href="{% url 'main-personal_page' %}">
+            <span class="en-text">Finish Creating Course</span>
+            <span class = 'ru-text'>Войти в систему</span>
+        </a>
+    </small>
+</div>
+</div>
+<script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}

@@ -19,10 +19,10 @@ class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField()
     #password = forms.CharField(widget=forms.PasswordInput)
     phone = forms.CharField(widget=forms.NumberInput)
-    person_type = forms.BooleanField(required=False)
+    #person_type = forms.BooleanField(required=False)
     class Meta(UserCreationForm):
         model = Person
-        fields = ['name','email','phone','person_type']
+        fields = ['name','email','phone']
 
 #no used
 class CustomUserChangeForm(UserChangeForm):

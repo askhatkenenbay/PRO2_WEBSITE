@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block title %}
     <title>Login Page</title>
@@ -7,18 +8,34 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <legend>Log in</legend>
+        <legend>
+            <span class="en-text">Log In</span>
+            <span class = 'ru-text'>Вход</span>
+        </legend>
         {{ form|crispy }}
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Log In</button>
+            <button class="btn btn-outline-info" type="submit">
+                <span class="en-text">Log In</span>
+                <span class = 'ru-text'>Вход</span>
+            </button>
             <small class="text-muted ml-2">
-                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                <a href="{% url 'password_reset' %}">
+                    <span class="en-text">Forgot Password?</span>
+                    <span class = 'ru-text'>Забыл пароль?</span>
+                </a>
             </small>
         </div>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Need  An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+                <span class="en-text"> Need  An Account? </span>
+                <span class = 'ru-text'>Нужна учетная запись?</span>
+               <a class="ml-2" href="{% url 'register' %}">
+                    <span class="en-text">Sign Up Now</span>
+                    <span class = 'ru-text'>Зарегистрироваться сейчас</span>
+                  
+                </a>
             </small>
         </div>
     </form>
+    <script src="{% static 'users/change_language.js' %}"></script>
 {% endblock content %}

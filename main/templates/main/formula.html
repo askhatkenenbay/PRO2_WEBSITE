@@ -16,17 +16,38 @@
             <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
         </div>
         <h5 class="center">{{user.name}}</h5>
-        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; My account</a>
-        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Theory and practice</a>
-        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Homework</a>
-        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Tests</a>
-        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">&ensp; Formula</a>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; My account</span>
+            <span class = 'ru-text'>&ensp;Личный кабинет</span>
+        </a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Theory and practice</span>
+            <span class = 'ru-text'>&ensp;Теория и практика</span>
+        </a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Homework</span>
+            <span class = 'ru-text'>&ensp;Домашние задания</span>
+        </a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Tests</span>
+            <span class = 'ru-text'>&ensp;Тесты</span>
+        </a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Formula</span>
+            <span class = 'ru-text'>&ensp;Справочник формул</span>
+        </a>
     </div>
     <div class="col-lg-8 right-side">
-            <h4 class="title">Formula</h4>
+            <h4 class="title">
+                <span class="en-text">Formula</span>
+                <span class = 'ru-text'>Справочник формул</span>
+            </h4>
             <div class="box">
                 <div class="wrapper-btn">
-                    <a href="#" class="btn btn-primary btn-category">All formulas</a>
+                    <a href="#" class="btn btn-primary btn-category">
+                        <span class="en-text">All formulas</span>
+                        <span class = 'ru-text'>Все формулы</span>
+                    </a>
                     <a href="#" class="btn btn-primary btn-category">Category 1</a>
                     <a href="#" class="btn btn-primary btn-category">Category 2</a>
                     <a href="#" class="btn btn-primary btn-category">Category 3</a>
@@ -144,8 +165,11 @@
             </div>
     </div>
     <div class="col-lg-1">
-        <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a>
-        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">Logout</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">
+            <span class="en-text">Logout</span>
+            <span class = 'ru-text'>Выйти</span>
+        </a>
     </div>
 </div>
+<script src="{% static 'main/change_language.js' %}"></script>
 {% endblock content %}

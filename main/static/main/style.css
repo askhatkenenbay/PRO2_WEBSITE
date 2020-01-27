@@ -129,6 +129,11 @@ Extra (xl) large devices (large desktops, 1200px and up)
     border-radius: 6px;
     width: 125px;
 }
+.btn-sign-in:hover {
+    background-color: #FFFFFF; /* Green */
+    color: white;
+    border: 1px solid #BDBDBD;
+}
 .sign-in-text{
     position: absolute;
     width: 45px;
@@ -150,6 +155,26 @@ Extra (xl) large devices (large desktops, 1200px and up)
     /* Gray 1 */
     color: #333333;
 }
+.to-home-text{
+    /*position: absolute;*/
+    width: 45px;
+    height: 17px;
+    left: calc(50% - 45px/2 + 0.5px);
+    top: calc(50% - 17px/2 + 0.5px);
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    padding-top: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Gray 1 */
+    color: #333333;
+}
 .btn-red{
     position: absolute;
     left: 0px;
@@ -161,6 +186,9 @@ Extra (xl) large devices (large desktops, 1200px and up)
 
     background: #F04B5D;
     border-radius: 6px;
+}
+.btn-red:hover{
+    background: #F04B5D;
 }
 .btn-red-submit{
     background-color: #fc2b63;
@@ -250,7 +278,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
     right: 42.45%;
     top: 13.07%;
     bottom: 85.46%;
-
+    
     font-family: Museo Sans Cyrl 500;
     font-style: normal;
     font-weight: bold;
@@ -397,4 +425,14 @@ color: #F04B5D;
     top: 2601px;
     background: #FDF0E5;
     border-radius: 6px;
+}
+
+.language{
+    float: left;
+    border: 1px solid black;
+    background-color:white;
+    border-color: white;
+    color:black;
+    font-weight: 500;
+    border-color: black;
 }

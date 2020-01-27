@@ -1,0 +1,252 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/release/v5.0.8/js/all.js"></script>
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <!-- Navigation -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-2">
+                <img src="/media/Logo.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown for-whom">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">Для кого</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown our-courses">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Наши курсы</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown our-courses">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Изменить Язык</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'main-home' %}" class="dropdown-item">English</a>
+                        <a href="#" class="dropdown-item">Русский</a>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="col-lg-2">
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">Выйти</h2>
+                </a>
+            </div>
+            <div class="col-lg-2 ">
+                <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="to-home-text">Вернуться к аккаунту</h2>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-lg-2 ">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">Войти</h2>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red">
+                    <h2 class="btn-red-text">Начать бесплатно</h2>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Title -->
+    <div class="title">
+        <h1 class="title-text">Онлайн-школа</h1>
+        <h1 class="title-text">по химии и физики</h1>
+        <br/>
+        <div class="row text-center ">
+            <p class="title-paragraph">Делаем обучение интересным и захватывающим.
+                Учим думать и видеть суть вещей. Помогаем применить полученные знания 
+                на практике и в жизни.
+            </p>
+        </div>
+    </div>
+
+    <!-- Image 1 -->
+    <div class="container-fluid padding orange">
+        <div class="row padding">
+            <div class="col-lg-8 block-one">
+                <h2 class="green-text">Школьникам и студентам</h2>
+                <h2 class="img-text-bold" >для повышения успеваемости</h2>
+                <h2 class="img-text-bold">и применения знаний на практике</h2">
+                <br/>
+                <br/>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-white">Оставить заявку</a>
+                <a href="#" class="btn btn-primary btn-pink">Подробнее</a>
+            </div>
+
+            <div class="col-lg-4">
+                <img class="image-top" src="/media/Frame_1.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 2 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6">
+                <img src="/media/Frame_2.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 move-down-150">
+                <h2 class="red-text">Изучайте химию и физику</h2>
+                <h2 class="img-text-bold">в удобном для вас формате,</h2>
+                <h2 class="img-text-bold">используя компьютер или</h2>
+                <h2 class="img-text-bold">смартфон</h2>
+            </div>
+        
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 3 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6 move-down-80">
+                <h2 class="red-text">Следим за вашим</h2>
+                <h2 class="red-text">прогрессом, анализируем</h2>
+                <h2 class="img-text-bold">и исправляем ошибки,</h2>
+                <h2 class="img-text-bold">присылаем результаты</h2>
+                <h2 class="img-text-bold">проведения занятий</h2>
+            </div>
+            <div class="col-lg-6">
+                <img src="/media/Frame_3.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 4 -->
+    <div id="four"  >
+        <div class="row padding">
+            <div class="col-lg-8 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >Между педагогом</h2>
+                <h2 class="img-text-bold-4">и учеником должна</h2>
+                <h2 class="img-text-bold-4">возникнуть &lt;&lt;химия&gt;&gt;</h2>
+                <h2 class="img-text-bold-4">и &lt;&lt;симпатия&gt;&gt;.</h2>
+                <br/>
+                <br/>
+                <h5 class="img-4-text">Подбираем педагогов с общими</h5>
+                <h5 class="img-4-text">интересами и целями.</h5>
+                <br/>
+                <a href="#" class="btn btn-primary btn-red-submit">Оставить заявку</a>
+            </div>
+            <div class="col-lg-4">
+                <img  src="/media/Frame_4.svg" class="img-fluid img4">
+            </div>
+        </div>
+    </divid="four">
+    <div class="empty-padding"></div>
+    <!-- Image 5 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6">
+                <img src="/media/Frame_5.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 move-down-50">
+                <h2 class="red-text">Первый урок бесплатно,</h2>
+                <h2 class="img-text-bold">чтобы понять, что вы</h2>
+                <h2 class="img-text-bold">ожидаете от занятий</h2>
+                <h2 class="img-text-bold">и учесть ваши пожелания</h2>
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 6 -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-6 move-down-50">
+                <h2 class="red-text">Уникальная онлайн-школа</h2>
+                <h2 class="img-text-bold">с крутыми педагогами,</h2>
+                <h2 class="img-text-bold">знающими английский язык</h2>
+                <h2 class="img-text-bold">и понимающими психологию</h2>
+                <h2 class="img-text-bold">детей. Нам доверяют.</h2>
+            </div>
+            <div class="col-lg-6">
+                <img src="/media/Frame_6.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Image 7 -->
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0">
+            <div class="col-lg-6 block-one">
+                <h2 class="red-text">Вводный урок</h2>
+                <h2 class="red-text">бесплатно</h2>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <h5>Проясним ожидания</h5>
+                <h5>Учтем пожелания</h5>
+                <h5>Определим уровень</h5>
+            </div>
+            <div class="col-lg-3 white limited">
+                <h2 class="img-text-bold">Школьникам</h2>
+                <h5>для повешения</h5>
+                <h5>успеваемости</h5>
+                <h5>и подготовке к тестам</h5>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-pink-red">Оставить заявку</a>
+            </div>
+            <div class="col-lg-3">
+                <img class="image-left" src="/media/Frame_7.svg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-left">
+                <div class="col-md-4">
+                    <img src="/media/footer.jpg">
+                </div>
+                <div class="col-md-4">
+                    <h5>Обучение</h5>
+                    <a class="footer-link" href="#">Процесс</a>
+                    <br/>
+                    <a class="footer-link" href="#">Предметы</a>
+                    <br/>
+                    <a class="footer-link" href="#">Педагоги</a>
+                    <br/>
+                    <a class="footer-link" href="#">Вопрос-ответ</a>
+                    <br/>
+                    <a class="footer-link" href="#">Цена</a>
+                </div>
+                <div class="col-md-4">
+                    <h5>PRO2</h5>
+                    <a class="footer-link" href="#">О школе</a>
+                    <br/>
+                    <a class="footer-link" href="#">Педагогам</a>
+                    <br/>
+                    <a class="footer-link" href="#">Отзывы</a>
+                    <br/>
+                    <a class="footer-link" href="#">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="empty-padding"></div>
+{% endblock content %}

@@ -157,11 +157,13 @@ color: #222224;
     right: 0px;
     top: 0px;
     bottom: 0px;
-
+    width: 125px;
+    height: 40px;
     /* Основной */
-
+    padding-right: 10px;
     background: #F04B5D;
     border-radius: 6px;
+    border-color: #F04B5D;
 }
 .my-account{
 left: 39.32%;

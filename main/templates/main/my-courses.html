@@ -1,0 +1,70 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Theory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/test.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row padding">
+    <div class="col-lg-3 left-side">
+        <img src="/media/Logo.svg" class="img-fluid">
+        <br/>
+        <div class="media photo">
+            <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+        </div>
+        <h5 class="center">{{user.name}}</h5>
+        <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; My account</span>
+            <span class = 'ru-text'>&ensp;Личный кабинет</span>
+        </a>
+        <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Theory and practice</span>
+            <span class = 'ru-text'>&ensp;Теория и практика</span>
+        </a>
+        <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Homework</span>
+            <span class = 'ru-text'>&ensp;Домашние задания</span>
+        </a>
+        <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Tests</span>
+            <span class = 'ru-text'>&ensp;Тесты</span>
+        </a>
+        <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+            <span class="en-text">&ensp; Formula</span>
+            <span class = 'ru-text'>&ensp;Справочник формул</span>
+        </a>
+        {% if user.person_type %}
+            <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                <span class="en-text">&ensp; Create Course</span>
+                <span class = 'ru-text'>&ensp;Создать Курс</span>
+            </a>    
+            <a href="{% url 'my-courses' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                <span class="en-text">&ensp; My Courses</span>
+                <span class = 'ru-text'>&ensp;Создать Курс</span>
+            </a>       
+        {% endif %}
+    </div>
+    <div class="col-lg-8 right-side">
+            <h4 class="title">
+                <span class="en-text">My Courses</span>
+                <span class = 'ru-text'>Тесты</span>
+            </h4>
+            {% for course in courses %}
+            <div style="background-color: white;">
+                <h3>{{ course.name }}</h3>
+                <h3>{{ course.course_type }}</h3>
+            </div>
+            {% endfor %}
+    </div>
+    <div class="col-lg-1">
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-red">
+            <span class="en-text">Logout</span>
+            <span class = 'ru-text'>Выйти</span>
+        </a>
+    </div>
+</div>
+<script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}
