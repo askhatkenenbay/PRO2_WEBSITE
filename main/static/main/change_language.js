@@ -37,3 +37,8 @@ function change_lan(value){
     }
     sessionStorage.setItem('lan', value);
 }
+
+
+function go_to(){
+    let course_name = document.getElementById
+}

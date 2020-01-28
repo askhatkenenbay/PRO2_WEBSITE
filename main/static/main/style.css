@@ -436,3 +436,9 @@ color: #F04B5D;
     font-weight: 500;
     border-color: black;
 }
+
+.wrapper{
+    display: grid;
+    
+    grid-template-columns: 50% 50%;
+}

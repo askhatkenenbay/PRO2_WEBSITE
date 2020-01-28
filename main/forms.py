@@ -2,7 +2,25 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw
+from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw, CourseTaken
+
+
+class CourseTakenForm(ModelForm):
+    user_email = forms.CharField(required=True)
+    course_name = forms.CharField(required=True)
+    is_paid = forms.BooleanField(required=True)
+    class Meta:
+        model = CourseTaken
+        fields = ['user_email','course_name','is_paid']
+
+class CourseTakenChangeForm(UserChangeForm):
+    user_email = forms.CharField()
+    course_name = forms.CharField()
+    is_paid = forms.BooleanField(required=True)
+    class Meta:
+        model = CourseTaken
+        fields = ('user_email','course_name','is_paid')
+
 
 COURSES = [('chemistry','chemistry'),('physics','physics'),]
 class CourseRegisterForm(ModelForm):
@@ -71,3 +89,6 @@ class TheoryLawRegisterForm(ModelForm):
     class Meta:
         model = TheoryLaw
         fields = ['name','text','more']
+
+
+

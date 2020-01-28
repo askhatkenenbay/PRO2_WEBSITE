@@ -25,7 +25,11 @@ class Person(AbstractBaseUser, PermissionsMixin):
     def str(self):
         return self.email
     
-      
+class CourseTaken(models.Model):
+    user_email = models.CharField(max_length=100)
+    course_name = models.CharField(max_length=100)
+    is_paid = models.BooleanField(default=False)
+
 class Course(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
     course_type = models.CharField(max_length=100)

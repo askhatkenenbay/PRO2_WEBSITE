@@ -22,23 +22,17 @@
                 <span class = 'ru-text'>&ensp;Личный кабинет</span>
             </a>
             {% if user.is_paid %}
-                <a href="{% url 'theory' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; Theory and practice</span>
-                    <span class = 'ru-text'>&ensp;Теория и практика</span>
-                </a>
-                <a href="{% url 'homework' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; Homework</span>
-                    <span class = 'ru-text'>&ensp;Домашние задания</span>
-                </a>
-                <a href="{% url 'test' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; Tests</span>
-                    <span class = 'ru-text'>&ensp;Тесты</span>
-                </a>
-                <a href="{% url 'formula' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; Formula</span>
-                    <span class = 'ru-text'>&ensp;Справочник формул</span>
-                </a>
+                {% for course in courses %}
+                    {% if course.is_paid %}
+                        <h1 style='display: none;' class='course-name'>{{ course.course_name }}</h1>
+                        <a href="{% url 'course-my' %}" type ="button" onclick="go_to()" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                            <span class="en-text">&ensp; {{ course.course_name }}</span>
+                            <span class = 'ru-text'>&ensp; {{ course.course_name }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
+
             {% if user.person_type %}
                 <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
                     <span class="en-text">&ensp; Create Course</span>
@@ -55,7 +49,6 @@
             <h2 class="my-account">
                 <span class="en-text">My Account&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                 <span class = 'ru-text'>Личный кабинет&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                
             </h2>
             <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">
                 <span class="en-text">Home</span>
@@ -112,6 +105,14 @@
                         </div>
                     </form>
                 </div>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" id="delete" name="delete" value="delete">
+                    <button class="btn btn-outline-info" type="submit">
+                        <span class="en-text">Delete</span>
+                        <span class = 'ru-text'>Delete</span>
+                    </button>
+                </form>
         </div>
         <div class="col-lg-1">
             <!-- <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a> -->

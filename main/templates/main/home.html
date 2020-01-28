@@ -13,6 +13,72 @@
 {% endblock %}
 
 {% block content %}
+    <div id="MyModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+                <div class="modal-content" style="background-color: blue;">
+                    <div class= "modal-header">
+                        <h2 class="">
+                            <span class="en-text">Your data</span>
+                            <span class = 'ru-text'>Ваши данные</span>
+                        </h2>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="email">Your Name:</label>
+                                <input required name ="user_name" type="input-group-text" class="form-control" placeholder="Your Name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input required name ="user_email" type="email" class="form-control" placeholder="Enter email" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Phone:</label>
+                                <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Your Phone" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div id="MyModalT" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+                <div class="modal-content" style="background-color: blue;">
+                    <div class= "modal-header">
+                        <h2 class="">
+                            <span class="en-text">Your data</span>
+                            <span class = 'ru-text'>Ваши данные</span>
+                        </h2>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="email">Your Name:</label>
+                                <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Your Name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input required name ="user_email" type="email" class="form-control" placeholder="Enter email" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Phone:</label>
+                                <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Your Phone" >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Field:</label>
+                                <input required name ="user_field" type="select" class="form-control" placeholder="Physics" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
     <br/>
     <footer class="footer">
         <div class="row padding">
@@ -20,7 +86,7 @@
             </div>
             <div class="col-lg-2">
                 <button class="language"  onclick="change_lan('EN')">English</a>
-                    <button class="language" onclick="change_lan('RU')">Русский</a>
+                <button class="language" onclick="change_lan('RU')">Русский</a>
             </div>
         </div>
     </footer>
@@ -51,7 +117,14 @@
                 </div>
             </div>
             <div class="col-lg-2">
+                <a href="{% url 'courses' %}" class="btn btn-danger btn-sign-in">
+                    <h2 class="to-home-text">
+                        <span class="en-text">Available Courses</span>
+                        <span class = 'ru-text'>Наши Курсы</span>
+                    </h2>
+                </a>
             </div>
+
             {% if user.is_authenticated %}
             <div class="col-lg-2">
                 <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
@@ -131,9 +204,9 @@
                 </h2">
                 <br/>
                 <br/>
-                <a href="{% url 'login' %}" class="btn btn-primary btn-white">
-                    <span class="en-text">Get Started</span>
-                    <span class = 'ru-text'>Оставить заявку</span>
+                <a href="{% url 'courses' %}"  type="button" class="btn btn-primary btn-white" data-toggle="modal" data-target="#MyModal">
+                        <span class="en-text">Get Started</span>
+                        <span class = 'ru-text'>Наши Курсы</span>
                 </a>
                 <a href="#" class="btn btn-primary btn-pink">
                     <span class="en-text">In more detail</span>
@@ -235,10 +308,11 @@
                     <span class = 'ru-text'>интересами и целями.</span>
                 </h5>
                 <br/>
-                <a href="#" class="btn btn-primary btn-red-submit">
+                <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
                     <span class="en-text">Submit application</span>
                     <span class = 'ru-text'>Оставить заявку</span>
                 </a>
+
             </div>
             <div class="col-lg-4">
                 <img  src="/media/Frame_4.svg" class="img-fluid img4">
@@ -348,7 +422,7 @@
                     <span class="en-text">for exams</span>
                     <span class = 'ru-text'>и подготовке к тестам</span>
                 </h5>
-                <a href="{% url 'login' %}" class="btn btn-primary btn-pink-red">
+                <a href="#" type="button" class="btn btn-primary btn-pink-red" data-toggle="modal" data-target="#MyModal">
                     <span class="en-text">Get started</span>
                     <span class = 'ru-text'>Оставить заявку</span>
                 </a>
@@ -407,7 +481,7 @@
                         <span class = 'ru-text'>О школе</span>
                     </a>
                     <br/>
-                    <a class="footer-link" href="#">
+                    <a class="footer-link" href="#"  type="button" data-toggle="modal" data-target="#MyModalT">
                         <span class="en-text">For educators</span>
                         <span class = 'ru-text'>Педагогам</span>
                     </a>

@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Courses</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/homework.css' %}">
+{% endblock %}
+
+{% block content %}
+<br/>
+<br/>
+    <div class="wrapper">
+        {% for course in courses %}
+            <a href="#" class="box">
+                <h3 class="topic">
+                    {{ course.name }}
+                </h3>
+                <p class="information">
+                    {{ course.course_type }}
+                </p>
+            </a>
+        {% endfor %}
+    </div>
+<script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}

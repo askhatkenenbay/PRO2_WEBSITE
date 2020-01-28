@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from main.models import Person
+from .models import CourseTaken
 from django.contrib.auth.decorators import login_required, user_passes_test
 from users.forms import PersonUpdateForm
 from django.contrib import messages
 from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterForm, TheoryGraphicRegisterForm, TheoryFormulaRegisterForm, TheoryLawRegisterForm 
 from .models import Course
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 user_teacher_required = user_passes_test(lambda user: user.person_type, login_url='/')
 def active_teacher_required(view_func):
     decorated_view_func = login_required(user_teacher_required(view_func))
@@ -15,6 +20,24 @@ def active_student_required(view_func):
     return decorated_view_func
 
 def home(request):
+    if request.method == 'POST':
+        email_from = settings.EMAIL_HOST_USER
+        user_email = request.POST.get('user_email', None)
+        if request.POST.get('user_field', None) != None :
+            subject = 'Teacher'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)+'\nUser Field: '+request.POST.get('user_field', None)
+        else :
+            subject = 'Submission'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)
+        recipient_list = ['pro2edtech@gmail.com',]
+        send_mail( subject, message, email_from, recipient_list )
+        # ------------------------------------------
+        subject = 'Pro2EdTech'
+        message = 'You have submitted the application at www.pro2edtech.com, our personal will contact you as soon as possible. \nThis message is auto-sent by the system of www.pro2edtech.com'
+        recipient_list = [request.POST.get('user_email', None),]
+        send_mail( subject, message, email_from, recipient_list )
+        messages.success(request, f'sent')
+        return redirect('main-home')
     context = {
         'posts':Person.objects.all()
     }
@@ -22,6 +45,10 @@ def home(request):
 
 @login_required
 def personal_page(request):
+    if request.POST.get('delete', None) != None :
+        Person.objects.filter(email=request.user.email).first().delete()
+        messages.success(request, f'Your account deleted')
+        return redirect('main-home')
     if request.method == 'POST':
         p_form = PersonUpdateForm(request.POST,
                                    request.FILES,
@@ -31,9 +58,11 @@ def personal_page(request):
             messages.success(request, f'Your account has been updated!')
             return redirect('main-personal_page')
     else:
+        courses = CourseTaken.objects.filter(user_email = request.user.email)
         p_form = PersonUpdateForm(instance=request.user)
     context = {
-        'p_form': p_form
+        'p_form' : p_form ,
+        'courses' : courses
     }
     return render(request, 'main/personal.html', context)
 
@@ -67,8 +96,6 @@ def formula(request):
 def homeworkNext(request):
     return render(request, 'main/homeworkNext.html')
 
-def home_ru(request):
-    return render(request, 'main/homeRussian.html')
 
 @login_required
 @active_teacher_required
@@ -173,3 +200,12 @@ def my_courses(request):
         'courses' : Course.objects.filter(creator_email=request.user.email)
     }
     return render(request,'main/my-courses.html', context)
+
+def courses(request):
+    context = {
+        'courses' : Course.objects.all()
+    }
+    return render(request,'main/courses.html', context)
+
+def course_my(request):
+    return render(request,'main/courses.html', context)
