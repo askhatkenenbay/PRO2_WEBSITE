@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>Theory</title>
+    <title>Homework</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/homework.css' %}">
 {% endblock %}
 
@@ -40,150 +40,34 @@
     <div class="col-lg-8 right-side">
             <h4 class="title">Homework</h4>
             <div class="wrapper">
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 1
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 2
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 3
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 4
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 5
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 6
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 7
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 8
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 9
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 10
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 11
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 12
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 13
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 14
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 15
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 16
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 17
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'homeworkNext' %}" class="box">
-                    <h3 class="topic">
-                          Topic 18
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
+                {% for temp in homework %}
+                    {% if temp.is_optional %}
+                    {% else %}
+                    <a href="{% url 'homeworkNext' %}" id = "{{temp.homework_name}}" class="box homework">
+                        <h3 class="topic">
+                            Topic {{temp.order}}
+                        </h3>
+                        <p class="information">
+                            {{temp.homework_name}}
+                        </p>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <h4 class="title">Optional</h4>
+            <div class="wrapper">
+                {% for temp in homework %}
+                    {% if temp.is_optional %}
+                        <a href="{% url 'homeworkNext' %}" id = "{{temp.homework_name}}" class="box homework">
+                            <h3 class="topic">
+                                Topic {{temp.order}}
+                            </h3>
+                            <p class="information">
+                                {{temp.homework_name}}
+                            </p>
+                        </a>
+                    {% endif %}
+                {% endfor %}
             </div>
     </div>
     <div class="col-lg-1">

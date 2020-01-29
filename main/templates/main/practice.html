@@ -43,65 +43,44 @@
                 <span class = 'ru-text'>Теория</span>
             </h4>
             <div class="main-box">
+                {% for temp in theory %}
                 <h5 class="topic">
-                    <span class="en-text">Topic 1</span>
-                    <span class = 'ru-text'>Тема 1</span>
+                    <span class="en-text">Topic {{ temp.order }}</span>
+                    <span class = 'ru-text'>Тема {{ temp.order }}</span>
                 </h5>
+                {% endfor %}
+                {% for temp in theory %}
                 <h2 class="topic-header">
-                    <span class="en-text">Pure substances and mixtures</span>
+                    <span class="en-text">{{ temp.theory_name }}</span>
                     <span class = 'ru-text'>Чистые вещества и смеси</span>
                 </h2>
+                {% endfor %}
                 <br/>
                 <h5 class="idea">
                     <span class="en-text">Essential ideas</span>
                     <span class = 'ru-text'>ОСНОВНЫЕ ИДЕИ</span>
                 </h5>
-                <h4 class="inside-text">
-                    <span class="dot"></span>
-                    &ensp;Substances that make up the mixture
-                </h4>
-                <h4 class="inside-text">
-                    <span class="dot"></span>
-                    &ensp;If impurities are not detected when using the substance for technical purposes, then the substance is called technically pure.
-                </h4>
-                <h4 class="inside-text">
-                    <span class="dot"></span>
-                    &ensp;A pure substance is sometimes called an individual substance, because it has strictly defined properties. For example, only distilled water has a melting point of 0 ° C, a boiling point of 100 ° C, and has no taste or smell.
-                </h4>
-                <h4 class="inside-text">
-                    <span class="dot"></span>
-                    &ensp;Substances that make up the mixture
-                </h4>
-                <h4 class="inside-text">
-                    <span class="dot"></span>
-                    &ensp;If impurities are not detected when using
-                </h4>
-
+                {% for temp in task %}
+                    {% if temp.task_type == "['essential']" %}
+                        <h4 class="inside-text">
+                            <span class="dot"></span>
+                            &ensp;{{temp.task}}
+                        </h4>
+                    {% endif %}
+                {% endfor %}
                 <h5 class="idea">
                     <span class="en-text">Understandings</span>
                     <span class = 'ru-text'>ЧТО НУЖНО ПОНИМАТЬ</span>
                 </h5>
                 <div class="wrapper">
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;Substances that make up the mixture   
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;For example, only distilled water
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;If no impurities are detected
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;Substances that make up the mixture
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;If no impurities are detected
-                    </h4>
+                    {% for temp in task %}
+                        {% if temp.task_type == "['understandings']" %}
+                            <h4 class="inside-text">
+                                <span class="dot"></span>
+                                &ensp;{{temp.task}}
+                            </h4>
+                        {% endif %}
+                    {% endfor %}
                 </div>
 
                 <h5 class="idea">
@@ -109,6 +88,14 @@
                     <span class = 'ru-text'>ПРИМЕНЕНИЯ И НАВЫКИ</span>
                 </h5>
                 <div class="wrapper">
+                    {% for temp in task %}
+                        {% if temp.task_type == "['app']" %}
+                            <h4 class="inside-text">
+                                <span class="dot"></span>
+                                &ensp;{{temp.task}}
+                            </h4>
+                        {% endif %}
+                    {% endfor %}
                     <h4 class="inside-text">
                         <span class="dot"></span>
                         &ensp;Substances that make up the mixture
@@ -127,8 +114,9 @@
                     <span class="en-text">Graphs</span>
                     <span class = 'ru-text'>ГРАФИКИ</span>
                 </h5>
-                <img src="/media/graph.jpg">
-
+                {% for temp in graphic %}  
+                    <img src= /media/{{ temp.graphic }}>
+                {% endfor %}
                 <h5 class="idea">
                     <span class="en-text">Formulas</span>
                     <span class = 'ru-text'>ФОРМУЛЫ</span>
@@ -175,28 +163,19 @@
                     <span class = 'ru-text'>ЗАКОНЫ</span>
                 </h5>
                 <div class="law-column">
+                    {% for temp in law %}  
                     <div class="row padding">
                         <div class="col-lg-3">
                             <h3 class="law-name">
-                                Henry - Dalton Law
+                                {{temp.name}}
                             </h3>
-                            <a href="#" class="more-details">More details</a>
+                            <a href="#" class="more-details">{{temp.more}}</a>
                         </div>
                         <div class="col-lg-9">
-                            <h4 class="inside-text">The law according to which at a constant temperature the solubility of a gas in a given liquid is directly proportional to the pressure of this gas above the solution. The law is suitable only for ideal solutions and low pressures.</h4>
+                            <h4 class="inside-text">{{temp.text}}</h4>
                         </div>
                     </div>
-                    <div class="row padding">
-                        <div class="col-lg-3">
-                            <h3 class="law-name">
-                                Graham's Law
-                            </h3>
-                            <a href="#" class="more-details">More details</a>
-                        </div>
-                        <div class="col-lg-9">
-                            <h4 class="inside-text">The law on the relative velocity of the outflow of various gases through a porous surface or artificial membrane under the same conditions. Discovered in 1829 by the Scottish chemist Thomas Graham.</h4>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
     </div>

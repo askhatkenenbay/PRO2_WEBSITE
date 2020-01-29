@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw, CourseTaken
+from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw, CourseTaken, Homework, HomeworkPoints
 
 
 class CourseTakenForm(ModelForm):
@@ -40,7 +40,7 @@ class TheoryRegisterForm(ModelForm):
         model = Theory
         fields = ['theory_name','order']
 
-TASK_TYPES = [('essential','essential'),('understandings','understandings'),]
+TASK_TYPES = [('essential','essential'),('understandings','understandings'),('app','app'),]
 class TheoryTaskRegisterForm(ModelForm):
     task_type =  forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=TASK_TYPES,)
     task = forms.CharField(required=True)
@@ -89,6 +89,27 @@ class TheoryLawRegisterForm(ModelForm):
     class Meta:
         model = TheoryLaw
         fields = ['name','text','more']
+
+class HomeworkForm(ModelForm):
+    course_name = forms.HiddenInput()
+    creator_email = forms.HiddenInput()
+
+    text = forms.TextInput()
+    name = forms.CharField()
+    order = forms.IntegerField(required=True)
+    class Meta:
+        model = Homework
+        fields = ['name','order','text']
+
+class HomeworkPointsForm(ModelForm):
+    course_name = forms.HiddenInput()
+    creator_email = forms.HiddenInput()
+    homework_name = forms.HiddenInput()
+
+    point = forms.CharField()
+    class Meta:
+        model = HomeworkPoints
+        fields = ['point']
 
 
 

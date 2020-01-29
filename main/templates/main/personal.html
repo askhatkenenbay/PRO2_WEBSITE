@@ -21,27 +21,22 @@
                 <span class="en-text">&ensp; My account</span>
                 <span class = 'ru-text'>&ensp;Личный кабинет</span>
             </a>
+            {% if user.is_god %}
+                <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Create Course</span>
+                    <span class = 'ru-text'>&ensp;Создать Курс</span>
+                </a>    
+            {% endif %}
             {% if user.is_paid %}
                 {% for course in courses %}
                     {% if course.is_paid %}
                         <h1 style='display: none;' class='course-name'>{{ course.course_name }}</h1>
-                        <a href="{% url 'course-my' %}" type ="button" onclick="go_to()" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                        <a href="{% url 'course-my' %}" id = "{{course.course_name}}" type ="button" class="btn btn-primary btn-custom course-list"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
                             <span class="en-text">&ensp; {{ course.course_name }}</span>
                             <span class = 'ru-text'>&ensp; {{ course.course_name }}</span>
                         </a>
                     {% endif %}
                 {% endfor %}
-            {% endif %}
-
-            {% if user.person_type %}
-                <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; Create Course</span>
-                    <span class = 'ru-text'>&ensp;Создать Курс</span>
-                </a>    
-                <a href="{% url 'my-courses' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
-                    <span class="en-text">&ensp; My Courses</span>
-                    <span class = 'ru-text'>&ensp;Создать Курс</span>
-                </a>       
             {% endif %}
         </div>
         <div class="col-lg-8 right-side">

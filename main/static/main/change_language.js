@@ -39,6 +39,30 @@ function change_lan(value){
 }
 
 
-function go_to(){
-    let course_name = document.getElementById
+
+function create_list(){
+    var courses = document.getElementsByClassName("course-list");
+    for(let i = 0; i < courses.length; i++){
+        console.log(courses[i]);
+        courses[i].href = courses[i].href + '?value=' + courses[i].id;
+    }
 }
+create_list();
+
+function list(){
+    var courses = document.getElementsByClassName("list");
+    for(let i = 0; i < courses.length; i++){
+        console.log(courses[i]);
+        courses[i].href = courses[i].href + '?theory=' + courses[i].id;
+    }
+}
+list();
+
+function homework(){
+    var courses = document.getElementsByClassName("homework");
+    for(let i = 0; i < courses.length; i++){
+        console.log(courses[i]);
+        courses[i].href = courses[i].href + '?homework=' + courses[i].id;
+    }
+}
+homework();

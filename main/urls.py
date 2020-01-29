@@ -19,4 +19,6 @@ urlpatterns = [
     path('personal-page/my-courses/',views.my_courses,name="my-courses"),
     path('courses/',views.courses,name="courses"),
     path('courses/my/',views.course_my,name="course-my"),
+    path('personal-page/create-course/create-homework/',views.create_homework,name="create-homework"),
+    path('personal-page/create-course/create-homework-points/',views.create_homework_points,name="create-homework-points"),
 ]

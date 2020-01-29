@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %}
-    <title>Create Theory</title>
+    <title>Create Theory Homework</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/create_course.css' %}">
 {% endblock %}
 
@@ -12,14 +12,14 @@
 <form method="POST">
     {% csrf_token %}
     <legend>
-        <span class="en-text">Create Theory Law</span>
-        <span class = 'ru-text'>Create Theory Law</span>
+        <span class="en-text">Create Theory Homework</span>
+        <span class = 'ru-text'>Create Theory Homework</span>
     </legend>
     {{ form|crispy }}
     <div class="form-group">
         <button class="btn btn-outline-info" type="submit">
-            <span class="en-text">Register</span>
-            <span class = 'ru-text'>Register</span>
+            <span class="en-text">Create</span>
+            <span class = 'ru-text'>Create</span>
         </button>
     </div>
     
@@ -27,16 +27,10 @@
     </div>
 <div class="border-top pt-3">
     <small class="text-muted">
-        <span class="en-text">Finished with Laws?</span>
+        <span class="en-text">Finished with Homework?</span>
         <span class = 'ru-text'>temp</span>
-        <a class="ml-2" href="{% url 'create-homework' %}">
-            <span class="en-text">Create Homework</span>
-            <span class = 'ru-text'>temp</span>
-        </a>
-        <span class="en-text">Or add another theory?</span>
-        <span class = 'ru-text'>temp</span>
-        <a class="ml-2" href="{% url 'create-theory' %}">
-            <span class="en-text">create-theory</span>
+        <a class="ml-2" href="{% url 'create-homework-points' %}">
+            <span class="en-text">Go to Homework Points</span>
             <span class = 'ru-text'>temp</span>
         </a>
     </small>

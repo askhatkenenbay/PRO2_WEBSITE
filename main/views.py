@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from main.models import Person
-from .models import CourseTaken
+from .models import *
 from django.contrib.auth.decorators import login_required, user_passes_test
 from users.forms import PersonUpdateForm
 from django.contrib import messages
-from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterForm, TheoryGraphicRegisterForm, TheoryFormulaRegisterForm, TheoryLawRegisterForm 
+from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterForm, TheoryGraphicRegisterForm, TheoryFormulaRegisterForm, TheoryLawRegisterForm, HomeworkForm, HomeworkPointsForm
 from .models import Course
 from django.core.mail import send_mail
 from django.conf import settings
@@ -69,17 +69,38 @@ def personal_page(request):
 @login_required
 @active_student_required
 def theory(request):
-    return render(request, 'main/theory.html')
+    theory = Theory.objects.filter(course_name = request.session.get('curr_course') )
+    context = {
+        'theory' : theory
+    }
+    return render(request, 'main/theory.html',context)
     
 @login_required
 @active_student_required
 def practice(request):
-    return render(request, 'main/practice.html')
+    cur_theory = request.GET.get('theory', '')
+    request.session['curr_theory'] = cur_theory
+    theory = Theory.objects.filter(course_name = request.session.get('curr_course'), theory_name = cur_theory )
+    theory_task = TheoryTask.objects.filter(theory_name = cur_theory)
+    theory_law = TheoryLaw.objects.filter(theory_name = cur_theory)
+    theory_graphic =TheoryGraphic.objects.filter(theory_name = cur_theory)
+    context = {
+        'theory' : theory,
+        'task' : theory_task,
+        'law' : theory_law,
+        'graphic' : theory_graphic
+    }
+    return render(request, 'main/practice.html',context)
 
 @login_required
 @active_student_required
 def homework(request):
-    return render(request, 'main/homework.html')
+    curr_course = request.session.get('curr_course')
+    hw = Homework.objects.filter(course_name = curr_course)
+    context = {
+        'homework' : hw
+    }
+    return render(request, 'main/homework.html',context)
 
 @login_required
 @active_student_required
@@ -94,7 +115,15 @@ def formula(request):
 @login_required
 @active_student_required
 def homeworkNext(request):
-    return render(request, 'main/homeworkNext.html')
+    cur_hw = request.GET.get('homework', '')
+    curr_course = request.session.get('curr_course')
+    hw = Homework.objects.filter(course_name = curr_course, homework_name = cur_hw)
+    points = HomeworkPoints.objects.filter(course_name = curr_course, homework_name = cur_hw)
+    context = {
+        'homework' : hw,
+        'points' : points
+    }
+    return render(request, 'main/homeworkNext.html',context)
 
 
 @login_required
@@ -105,7 +134,9 @@ def create_course(request):
         if form.is_valid():
             request.session['course_name'] = form.cleaned_data['name']
             request.session['person_id'] = form.cleaned_data['creator_email']
-            form.save()
+            # form.save()
+            temp = Course(name=form.cleaned_data['name'],course_type=form.cleaned_data['course_type'],creator_email=form.cleaned_data['creator_email'])
+            temp.save()
             messages.success(request, f'You created course, now create theory')
             return redirect('create-theory')
     else:
@@ -121,7 +152,9 @@ def create_theory(request):
             request.session['theory_name'] = form.cleaned_data['theory_name']
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
-            form.save()
+            # form.save()
+            temp = Theory(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],order=form.cleaned_data['order'])
+            temp.save()
             messages.success(request, f'You created theory')
             return redirect('create-theory-task')
     else:
@@ -138,7 +171,9 @@ def create_theory_task(request):
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
             form.cleaned_data['theory_name'] = request.session.get('theory_name')
-            form.save()
+            # form.save()
+            temp = TheoryTask(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],task_type=form.cleaned_data['task_type'],task=form.cleaned_data['task'])
+            temp.save()
             messages.success(request, f'You created theory-task')
             return redirect('create-theory-task')
     else:
@@ -154,7 +189,9 @@ def create_theory_graphic(request):
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
             form.cleaned_data['theory_name'] = request.session.get('theory_name')
-            form.save()
+            # form.save()
+            temp=TheoryGraphic(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],order=form.cleaned_data['order'],graphic=form.cleaned_data['image'])
+            temp.save()
             messages.success(request, f'You created theory-graphic')
             return redirect('create-theory-graphic')
     else:
@@ -170,7 +207,9 @@ def create_theory_formula(request):
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
             form.cleaned_data['theory_name'] = request.session.get('theory_name')
-            form.save()
+            # form.save()
+            temp = TheoryFormula(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],header=form.cleaned_data['header'],main=form.cleaned_data['main'],footer=form.cleaned_data['footer'],category=form.cleaned_data['category'])
+            temp.save()
             messages.success(request, f'You created theory-formula')
             return redirect('create-theory-formula')
     else:
@@ -186,12 +225,50 @@ def create_theory_law(request):
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
             form.cleaned_data['theory_name'] = request.session.get('theory_name')
-            form.save()
+            # form.save()
+            temp = TheoryLaw(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],name=form.cleaned_data['name'],text=form.cleaned_data['text'],more=form.cleaned_data['more'])
+            temp.save()
             messages.success(request, f'You created theory-law')
             return redirect('create-theory-law')
     else:
         form = TheoryLawRegisterForm()
     return render(request,'main/create-theory-law.html', { 'form' : form })
+
+def create_homework(request):
+    if request.method == 'POST':
+        form = HomeworkForm(request.POST)
+        if form.is_valid():
+            form.cleaned_data['creator_email'] = request.session.get('person_id')
+            form.cleaned_data['course_name'] = request.session.get('course_name')
+            request.session['homework'] = form.cleaned_data['name']
+            # form.save()
+            if request.user.person_type:
+                temp = Homework(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text'],is_optional=True)
+            else:
+                temp = Homework(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text']) 
+            temp.save()
+            messages.success(request, f'You created homework')
+            return redirect('create-homework-points')
+    else:
+        form = HomeworkForm()
+    return render(request,'main/create-homework.html', { 'form' : form })
+
+def create_homework_points(request):
+    if request.method == 'POST':
+        form = HomeworkPointsForm(request.POST)
+        if form.is_valid():
+            form.cleaned_data['creator_email'] = request.session.get('person_id')
+            form.cleaned_data['course_name'] = request.session.get('course_name')
+            form.cleaned_data['homework_name'] = request.session.get('homework')
+            # form.save()
+            temp = HomeworkPoints(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],homework_name=form.cleaned_data['homework_name'],points=form.cleaned_data['point'])
+            temp.save()
+            messages.success(request, f'You created homework-point')
+            return redirect('create-homework-points')
+    else:
+        form = HomeworkPointsForm()
+    return render(request,'main/create-homework-points.html', { 'form' : form })
+
 
 @login_required
 @active_teacher_required
@@ -207,5 +284,11 @@ def courses(request):
     }
     return render(request,'main/courses.html', context)
 
-def course_my(request):
-    return render(request,'main/courses.html', context)
+@login_required
+def course_my(request): 
+    request.session['curr_course'] = request.GET.get('value', '')
+    context = {
+        'course_name' : request.GET.get('value', ''),
+    }
+    return render(request,'main/special.html', context)
+

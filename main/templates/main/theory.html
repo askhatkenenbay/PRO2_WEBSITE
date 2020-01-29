@@ -40,150 +40,18 @@
     <div class="col-lg-8 right-side">
             <h4 class="title">Theory and practice</h4>
             <div class="wrapper">
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 1
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 2
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 3
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 4
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 5
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 6
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 7
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 8
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 9
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 10
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 11
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 12
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 13
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 14
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 15
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 16
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 17
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
-                <a href="{% url 'practice' %}" class="box">
-                    <h3 class="topic">
-                          Topic 18
-                     </h3>
-                    <p class="information">
-                        Pure substances and mixtures
-                    </p>
-                </a>
+                {% if user.is_paid %}
+                    {% for temp in theory %}
+                        <a href="{% url 'practice' %}" id="{{temp.theory_name}}" class="box list">
+                            <h3 class="topic">
+                                Topic {{ temp.order }}
+                            </h3>
+                            <p class="information">
+                                 {{temp.theory_name}}
+                            </p>
+                        </a>
+                    {% endfor %}
+                {% endif %}
             </div>
     </div>
     <div class="col-lg-1">

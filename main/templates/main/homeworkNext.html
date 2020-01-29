@@ -43,11 +43,13 @@
                 <span class = 'ru-text'>Домашние задание</span>
             </h4>
             <div class="main-box">
-                <h5 class="topic">
-                    <span class="en-text">Topic 1</span>
-                    <span class = 'ru-text'>Тема 1</span>
-                </h5>
-                <h2 class="topic-header">Pure substances and mixtures</h2>
+                {% for temp in homework %}
+                    <h5 class="topic">
+                        <span class="en-text">Topic {{temp.order}}</span>
+                        <span class = 'ru-text'>Тема {{temp.order}}</span>
+                    </h5>
+                    <h2 class="topic-header">{{temp.homework_name}}</h2>
+                {% endfor %}
                 <br/>
                 <h5 class="idea">
                     <span class="en-text">Homework</span>
@@ -56,17 +58,19 @@
                 </h5>
                 <br/>
                 <div class="wrapper">
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;Substances that make up the mixture
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;If no impurities are detected
-                    </h4>
+                    {% for temp in points %}
+                        <h4 class="inside-text">
+                            <span class="dot"></span>
+                            &ensp;{{temp.points}}
+                        </h4>
+                    {% endfor %}
                 </div>
                 <br/>
-                <h4 class="inside-text">The law on the relative velocity of the outflow of various gases through a porous surface or artificial membrane under the same conditions. Discovered in 1829 by the Scottish chemist Thomas Graham.</h4>
+                {% for temp in homework %}
+                    <h4 class="inside-text">{{temp.text}}</h4>
+                {% endfor %}
+
+                
             </div>
     </div>
     <div class="col-lg-1">

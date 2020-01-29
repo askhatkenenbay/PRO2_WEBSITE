@@ -8,18 +8,18 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = Person
-    list_display = ('email', 'name', 'phone','person_type','is_paid',)
-    list_filter = ('email', 'name', 'phone','person_type','is_paid',)
-    list_editable = ('person_type','is_paid',)
+    list_display = ('email', 'name', 'phone','person_type','is_paid','is_god',)
+    list_filter = ('email', 'name', 'phone','person_type','is_paid','is_god',)
+    list_editable = ('person_type','is_paid','is_god',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Permissions', {'fields': ('person_type','is_paid',)}),
+        ('Permissions', {'fields': ('person_type','is_paid','is_god',)}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email','name','phone','person_type','is_paid', 'password1', 'password2')}
+            'fields': ('email','name','phone','person_type','is_paid', 'password1', 'password2','is_god')}
         ),
     )
     search_fields = ('email',)
