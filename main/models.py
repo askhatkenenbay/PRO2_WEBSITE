@@ -90,8 +90,8 @@ class TheoryLaw(models.Model):
     theory_name = models.CharField(max_length=200)
 
     name = models.CharField(max_length=100)
-    text = models.CharField(max_length=10000)
-    more = models.TextField()
+    text = models.TextField()
+    more = models.CharField(max_length=250)
     def __str__(self):
         return ""+self.course_name+"-"+self.theory_name+"-"+self.name
 
@@ -99,12 +99,12 @@ class TheoryLaw(models.Model):
 class Homework(models.Model):
     creator_email = models.CharField(max_length=100, default="none")
     course_name = models.CharField(max_length=100)
-    is_optional = models.BooleanField(default=False)
+    is_optional = models.BooleanField()
     order = models.IntegerField()
     homework_name = models.CharField(max_length=100)
     text = models.TextField()
     def __str__(self):
-        return ""+self.course_name+"-"+self.homework_name
+        return ""+self.course_name+"-"+self.homework_name+"-->"+str(self.is_optional)
 
 class HomeworkPoints(models.Model):
     creator_email = models.CharField(max_length=100)

@@ -9,32 +9,23 @@
 {% block content %}
 <div>
     <div>
-<form method="POST">
-    {% csrf_token %}
-    <legend>
-        <span class="en-text">Create Theory Homework</span>
-        <span class = 'ru-text'>Create Theory Homework</span>
-    </legend>
-    {{ form|crispy }}
-    <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">
-            <span class="en-text">Create</span>
-            <span class = 'ru-text'>Create</span>
-        </button>
+        <form method="POST">
+            {% csrf_token %}
+            <legend>
+                <span class="en-text">Create Theory Homework</span>
+                <span class = 'ru-text'>Create Theory Homework</span>
+            </legend>
+            {{ form|crispy }}
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    <span class="en-text">Create</span>
+                    <span class = 'ru-text'>Create</span>
+                </button>
+            </div>
+            
+        </form>
     </div>
-    
-</form>
-    </div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        <span class="en-text">Finished with Homework?</span>
-        <span class = 'ru-text'>temp</span>
-        <a class="ml-2" href="{% url 'create-homework-points' %}">
-            <span class="en-text">Go to Homework Points</span>
-            <span class = 'ru-text'>temp</span>
-        </a>
-    </small>
-</div>
+
 </div>
 <script src="{% static 'main/change_language.js' %}"></script>
 {% endblock content %}

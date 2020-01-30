@@ -80,15 +80,15 @@ class TheoryFormulaRegisterForm(ModelForm):
 
 class TheoryLawRegisterForm(ModelForm):
     name = forms.CharField()
-    text = forms.CharField()
-    more = forms.TextInput()
+    text = forms.TextInput()
+    more = forms.CharField()
 
     theory_name = forms.HiddenInput()
     course_name = forms.HiddenInput()
     creator_email = forms.HiddenInput()
     class Meta:
         model = TheoryLaw
-        fields = ['name','text','more']
+        fields = ['name','more','text']
 
 class HomeworkForm(ModelForm):
     course_name = forms.HiddenInput()

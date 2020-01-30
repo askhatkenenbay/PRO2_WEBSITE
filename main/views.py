@@ -8,15 +8,19 @@ from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterFor
 from .models import Course
 from django.core.mail import send_mail
 from django.conf import settings
-
-
 user_teacher_required = user_passes_test(lambda user: user.person_type, login_url='/')
 def active_teacher_required(view_func):
     decorated_view_func = login_required(user_teacher_required(view_func))
     return decorated_view_func
+
 paid_student_required = user_passes_test(lambda user: user.is_paid, login_url='/')
 def active_student_required(view_func):
     decorated_view_func = login_required(paid_student_required(view_func))
+    return decorated_view_func
+
+temp_god_required = user_passes_test(lambda user: user.is_god, login_url='/')
+def god_required(view_func):
+    decorated_view_func = login_required(temp_god_required(view_func))
     return decorated_view_func
 
 def home(request):
@@ -96,9 +100,11 @@ def practice(request):
 @active_student_required
 def homework(request):
     curr_course = request.session.get('curr_course')
-    hw = Homework.objects.filter(course_name = curr_course)
+    hw = Homework.objects.filter(course_name = curr_course, is_optional=False)
+    op = Homework.objects.filter(course_name = curr_course,is_optional=True)
     context = {
-        'homework' : hw
+        'homework' : hw,
+        'optional' : op
     }
     return render(request, 'main/homework.html',context)
 
@@ -127,7 +133,7 @@ def homeworkNext(request):
 
 
 @login_required
-@active_teacher_required
+@god_required
 def create_course(request):
     if request.method == 'POST':
         form = CourseRegisterForm(request.POST)
@@ -144,7 +150,7 @@ def create_course(request):
     return render(request,'main/create_course.html', { 'form' : form })
 
 @login_required
-@active_teacher_required
+@god_required
 def create_theory(request):
     if request.method == 'POST':
         form = TheoryRegisterForm(request.POST)
@@ -163,7 +169,7 @@ def create_theory(request):
 
 
 @login_required
-@active_teacher_required
+@god_required
 def create_theory_task(request):
     if request.method == 'POST':
         form = TheoryTaskRegisterForm(request.POST)
@@ -181,7 +187,7 @@ def create_theory_task(request):
     return render(request,'main/create-theory-task.html', { 'form' : form })
 
 @login_required
-@active_teacher_required
+@god_required
 def create_theory_graphic(request):
     if request.method == 'POST':
         form = TheoryGraphicRegisterForm(request.POST, request.FILES, instance=request.user)
@@ -199,7 +205,7 @@ def create_theory_graphic(request):
     return render(request,'main/create-theory-graphic.html', { 'form' : form })
 
 @login_required
-@active_teacher_required
+@god_required
 def create_theory_formula(request):
     if request.method == 'POST':
         form = TheoryFormulaRegisterForm(request.POST)
@@ -217,7 +223,7 @@ def create_theory_formula(request):
     return render(request,'main/create-theory-formula.html', { 'form' : form })
 
 @login_required
-@active_teacher_required
+@god_required
 def create_theory_law(request):
     if request.method == 'POST':
         form = TheoryLawRegisterForm(request.POST)
@@ -234,6 +240,8 @@ def create_theory_law(request):
         form = TheoryLawRegisterForm()
     return render(request,'main/create-theory-law.html', { 'form' : form })
 
+@login_required
+@active_teacher_required
 def create_homework(request):
     if request.method == 'POST':
         form = HomeworkForm(request.POST)
@@ -243,9 +251,9 @@ def create_homework(request):
             request.session['homework'] = form.cleaned_data['name']
             # form.save()
             if request.user.person_type:
-                temp = Homework(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text'],is_optional=True)
+                temp = Homework(creator_email=request.user.email,course_name=request.session.get('curr_course'),order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text'],is_optional=True)
             else:
-                temp = Homework(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text']) 
+                temp = Homework(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],order=form.cleaned_data['order'],homework_name=form.cleaned_data['name'],text=form.cleaned_data['text'],is_optional=False) 
             temp.save()
             messages.success(request, f'You created homework')
             return redirect('create-homework-points')
@@ -253,6 +261,8 @@ def create_homework(request):
         form = HomeworkForm()
     return render(request,'main/create-homework.html', { 'form' : form })
 
+@login_required
+@active_teacher_required
 def create_homework_points(request):
     if request.method == 'POST':
         form = HomeworkPointsForm(request.POST)
@@ -270,13 +280,13 @@ def create_homework_points(request):
     return render(request,'main/create-homework-points.html', { 'form' : form })
 
 
-@login_required
-@active_teacher_required
-def my_courses(request):
-    context = {
-        'courses' : Course.objects.filter(creator_email=request.user.email)
-    }
-    return render(request,'main/my-courses.html', context)
+# @login_required
+# def my_courses(request):
+#     context = {
+#         'courses' : Course.objects.filter(creator_email=request.user.email)
+#     }
+#     return render(request,'main/my-courses.html', context)
+
 
 def courses(request):
     context = {
