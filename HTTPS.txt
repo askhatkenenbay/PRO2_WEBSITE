@@ -1,0 +1,25 @@
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-apache
+
+sudo nano /etc/apache2/sites-available/django_project.conf
+ServerName www.pro2edtech.com
+comment out WSGI and save
+
+sudo certbot --apache
+
+sudo nano /etc/apache2/sites-available/django_project.conf
+remove
+
+sudo nano /etc/apache2/sites-available/django_project-le-ssl.conf
+uncomment WSGI
+
+sudo ufw allow https
+sudo service apache2 restart
+
+sudo certbot renew --dry-run
+sudo crontab -e
+30 4 1 * * sudo certbot renew --quiet

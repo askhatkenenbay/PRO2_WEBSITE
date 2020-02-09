@@ -1,0 +1,109 @@
+1	create new ec2 
+2	ssh -i C:/users/Askhat/Desktop/PRO2/ElonPro2.pem ubuntu@ec2-3-9-173-128.eu-west-2.compute.amazonaws.com
+3	sudo apt-get update && apt-get upgrade
+4	sudo hostnamectl set-hostname django-server
+5	sudo nano /etc/hosts
+6	add line '3.9.173.128 django-server' <-- below 127.0.0.1 localhost line
+7	save and exit file
+8	sudo apt-get install ufw
+9	sudo ufw default allow outgoing
+10	sudo ufw default deny incoming
+11	sudo ufw allow ssh
+12	sudo ufw allow 8000
+13	sudo ufw enable
+14	in local machine call pip freeze, copy its content to requirements.txt inside project folder
+15	upload project to server (move to desktop or whereever project located)
+16	in local machine scp -i C:/users/Askhat/Desktop/PRO2/ElonPro2.pem -r pro2_project ubuntu@ec2-3-9-173-128.eu-west-2.compute.amazonaws.com:~/
+17	sudo apt-get install python3-pip
+18	sudo apt-get install python3-venv
+19	python3 -m venv pro2_project/venv
+20	cd pro2_project/
+21	source venv/bin/activate
+22	pip install -r requirements.txt
+23	sudo nano pro2_project/settings.py
+24	ALLOWED_HOSTS = ['ip-address']
+25	above STATIC_URL --> add STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+26	save and exit file
+27	python manage.py collectstatic
+28	cd
+29	sudo apt-get install apache2
+30	sudo apt-get install libapache2-mod-wsgi-py3
+31	cd /etc/apache2/sites-available/
+32	sudo cp 000-default.conf django_project.conf
+33	sudo nano django_project.conf
+34	add above closing VirtualHost tag
+
+	Alias /static /home/ubuntu/pro2_project/static
+	<Directory /home/ubuntu/pro2_project/static>
+		Require all granted
+	</Directory>
+
+	Alias /media /home/ubuntu/pro2_project/media
+	<Directory /home/ubuntu/pro2_project/media>
+		Require all granted
+	</Directory>
+
+	<Directory /home/ubuntu/pro2_project/pro2_project>
+		<Files wsgi.py>
+			Require all granted
+		</Files>
+	</Directory>
+
+	WSGIScriptAlias / /home/ubuntu/pro2_project/pro2_project/wsgi.py
+	WSGIDaemonProcess django_app python-path=/home/ubuntu/pro2_project python-home=/home/ubuntu/pro2_project/venv
+	WSGIProcessGroup django_app
+
+35	cd
+36	sudo a2ensite django_project
+37	sudo a2dissite 000-default.conf
+38	sudo chown :www-data pro2_project/db.sqlite3
+39	sudo chmod 664 pro2_project/db.sqlite3
+40	sudo chown :www-data pro2_project/
+41	sudo chown -R :www-data pro2_project/media/
+42	sudo chmod -R 775 pro2_project/media
+43	sudo touch /etc/config.json
+44	sudo nano pro2_project/pro2_project/settings.py
+45	copy and remove secret_key [	 '3s8**sa4+wq-go-a(9euf#avt-cj&fj&a-ck)_diuk(p6dff_k' ]
+46	sudo nano /etc/config.json
+47	write in file
+
+	{
+		"SECRET_KEY": "3s8**sa4+wq-go-a(9euf#avt-cj&fj&a-ck)_diuk(p6dff_k",
+		"EMAIL_USER": "askhat.kenenbay@gmail.com",
+		"EMAIL_PASS": "Askhat255899"
+	}
+
+48	sudo nano pro2_project/pro2_project/settings.py
+49	write below import os line
+	import json
+	with open('/etc/config.json') as config_file:
+		config = json.load(config_file)
+50	SECRET_KEY = config['SECRET_KEY']
+	DEBUG = False
+	EMAIL_HOST_USER = config.get('EMAIL_USER')
+	EMAIL_HOST_PASSWORD = config.get('EMAIL_PASS')
+	save exit then
+51	sudo ufw delete allow 8000
+52	sudo ufw allow http/tcp
+53	sudo service apache2 restart
+54	sudo chmod 775 pro2_project/
+55	sudo service apache2 restart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

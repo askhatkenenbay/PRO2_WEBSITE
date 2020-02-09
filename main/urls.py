@@ -21,4 +21,7 @@ urlpatterns = [
     path('courses/my/',views.course_my,name="course-my"),
     path('personal-page/create-course/create-homework/',views.create_homework,name="create-homework"),
     path('personal-page/create-course/create-homework-points/',views.create_homework_points,name="create-homework-points"),
+    path('our-courses/physics',views.physics,name="physics"),
+    path('our-courses/chemistry',views.chemistry,name="chemistry"),
+    path('our-courses/math',views.math,name="math"),
 ]
