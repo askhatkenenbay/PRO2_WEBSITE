@@ -303,7 +303,25 @@ def course_my(request):
     return render(request,'main/special.html', context)
 
 def chemistry(request):
-    return render(request,'main/special.html')
+    if request.method == 'POST':
+        email_from = settings.EMAIL_HOST_USER
+        user_email = request.POST.get('user_email', None)
+        if request.POST.get('user_field', None) != None :
+            subject = 'Teacher'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)+'\nUser Field: '+request.POST.get('user_field', None)
+        else :
+            subject = 'Submission'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)
+        recipient_list = ['pro2edtech@gmail.com',]
+        send_mail( subject, message, email_from, recipient_list )
+        # ------------------------------------------
+        subject = 'Pro2EdTech'
+        message = 'You have submitted the application at www.pro2edtech.com, our personal will contact you as soon as possible. \nThis message is auto-sent by the system of www.pro2edtech.com'
+        recipient_list = [request.POST.get('user_email', None),]
+        send_mail( subject, message, email_from, recipient_list )
+        messages.success(request, f'sent')
+        return redirect('main/temp/physics.html')
+    return render(request,'main/temp/chemistry.html')
 def physics(request):
     if request.method == 'POST':
         email_from = settings.EMAIL_HOST_USER
@@ -325,5 +343,23 @@ def physics(request):
         return redirect('main/temp/physics.html')
     return render(request,'main/temp/physics.html')
 def math(request):
-    return render(request,'main/special.html')
+    if request.method == 'POST':
+        email_from = settings.EMAIL_HOST_USER
+        user_email = request.POST.get('user_email', None)
+        if request.POST.get('user_field', None) != None :
+            subject = 'Teacher'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)+'\nUser Field: '+request.POST.get('user_field', None)
+        else :
+            subject = 'Submission'
+            message = 'User Name: '+request.POST.get('user_name', None)+'\nUser Email: '+request.POST.get('user_email', None)+'\nUser Phone: '+request.POST.get('user_phone', None)
+        recipient_list = ['pro2edtech@gmail.com',]
+        send_mail( subject, message, email_from, recipient_list )
+        # ------------------------------------------
+        subject = 'Pro2EdTech'
+        message = 'You have submitted the application at www.pro2edtech.com, our personal will contact you as soon as possible. \nThis message is auto-sent by the system of www.pro2edtech.com'
+        recipient_list = [request.POST.get('user_email', None),]
+        send_mail( subject, message, email_from, recipient_list )
+        messages.success(request, f'sent')
+        return redirect('main/temp/physics.html')
+    return render(request,'main//temp/math.html')
 

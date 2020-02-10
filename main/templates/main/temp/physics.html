@@ -12,6 +12,37 @@
 {% endblock %}
 
 {% block content %}
+<div id="MyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+            <div class="modal-content" style="background-color: blue;">
+                <div class= "modal-header">
+                    <h2 class="">
+                        <span class="en-text">Your data</span>
+                        <span class = 'ru-text'>Ваши данные</span>
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Your Name:</label>
+                            <input required name ="user_name" type="input-group-text" class="form-control" placeholder="Your Name" >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input required name ="user_email" type="email" class="form-control" placeholder="Enter email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Phone:</label>
+                            <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Your Phone" >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
 <div id="MyModalT" class="modal fade" role="dialog">
     <div class="modal-dialog">
             <div class="modal-content" style="background-color: blue;">
@@ -81,7 +112,7 @@
                 <div class="dropdown our-courses">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">
+                        <a href="{% url 'math' %}" class="dropdown-item">
                             <span class="en-text">Math</span>
                             <span class = 'ru-text'>Матиматика</span>
                         </a>
@@ -89,7 +120,7 @@
                             <span class="en-text">Physics</span>
                             <span class = 'ru-text'>Физика</span>
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="{% url 'chemistry' %}" class="dropdown-item">
                             <span class="en-text">Chemistry</span>
                             <span class = 'ru-text'>Химия</span>
                         </a>
@@ -145,12 +176,59 @@
     <div class="empty-padding"></div>
 
     <br/>
+    <div>
     <img class="image-top" src="/media/phys1.svg" class="img-fluid">
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <img class="image-top" src="/media/phys2.svg" class="img-fluid">
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <img class="image-top" src="/media/phys3.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    <br/>
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
+            <div class="col-lg-6 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Запишитесь</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>на пробный урок</span>
+                </h2>
+            </div>
+            <div class="col-lg-6 block-one" style="padding-top: 75px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                    </div>
+                    <div class="form-group">
+                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                    </div>
+                    <div class="form-group">
+                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                    </div>
+                    <div class="d-inline-block" >
+                        <small class="text-muted">
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <br/>
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                        </small>
+                    </div>
+                    <div class="d-inline-block" style="padding-left: 50px;">
+                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                        <span class="en-text">submit</span>
+                        <span class = 'ru-text'>Оставить заявку</span>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <div>
     <img class="image-top" src="/media/phys4.svg" class="img-fluid">
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <img class="image-top" src="/media/phys5.svg" class="img-fluid">
@@ -158,8 +236,53 @@
     <img class="image-top" src="/media/phys6.svg" class="img-fluid">
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <img class="image-top" src="/media/phys7.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    </div>
 
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
+            <div class="col-lg-6 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Оставьте заявку</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>на обучение</span>
+                </h2>
+            </div>
+            <div class="col-lg-6 block-one" style="padding-top: 75px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                    </div>
+                    <div class="form-group">
+                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                    </div>
+                    <div class="form-group">
+                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                    </div>
+                    <div class="d-inline-block" >
+                        <small class="text-muted">
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <br/>
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                        </small>
+                    </div>
+                    <div class="d-inline-block" style="padding-left: 50px;">
+                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                        <span class="en-text">submit</span>
+                        <span class = 'ru-text'>Оставить заявку</span>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/>
     <!-- Footer -->
     <footer>
         <div class="container-fluid padding">

@@ -1,0 +1,322 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Math</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/release/v5.0.8/js/all.js"></script>
+{% endblock %}
+
+{% block content %}
+<br/>
+    <footer class="footer">
+        <div class="row padding">
+            <div class="col-lg-10">
+            </div>
+            <div class="col-lg-2">
+                <button class="language"  onclick="change_lan('EN')">English</a>
+                <button class="language" onclick="change_lan('RU')">Русский</a>
+            </div>
+        </div>
+    </footer>
+<br/>
+
+    <!-- Navigation -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-lg-2">
+                <img src="/media/Logo.svg" class="img-fluid">
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown for-whom">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">For whom</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown our-courses">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'math' %}" class="dropdown-item">
+                            <span class="en-text">Math</span>
+                            <span class = 'ru-text'>Матиматика</span>
+                        </a>
+                        <a href="{% url 'physics' %}" class="dropdown-item">
+                            <span class="en-text">Physics</span>
+                            <span class = 'ru-text'>Физика</span>
+                        </a>
+                        <a href="{% url 'chemistry' %}" class="dropdown-item">
+                            <span class="en-text">Chemistry</span>
+                            <span class = 'ru-text'>Химия</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <a href="{% url 'courses' %}" class="btn btn-danger btn-sign-in">
+                    <h2 class="to-home-text">
+                        <span class="en-text">Courses</span>
+                        <span class = 'ru-text'>Курсы</span>
+                    </h2>
+                </a>
+            </div>
+
+            {% if user.is_authenticated %}
+            <div class="col-lg-2">
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">
+                        <span class="en-text">Logout</span>
+                        <span class = 'ru-text'>Выйти</span>
+                    </h2>
+                </a>
+            </div>
+            <div class="col-lg-2 ">
+                <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="to-home-text">
+                        <span class = 'en-text'>Back to account</span>
+                        <span class = 'ru-text'>Вернуться</span>
+                    </h2>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-lg-2 ">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
+                    <h2 class="sign-in-text">
+                        <span class = 'en-text'>Sign in</span>
+                        <span class = 'ru-text'>Войти</span>
+                    </h2>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red">
+                    <h2 class="btn-red-text">
+                        <span class = 'en-text'>Start for free</span>
+                        <span class = 'ru-text'>Начать бесплатно</span>
+                    </h2>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="empty-padding"></div>
+
+    <div class="container-fluid padding ">
+        <div class="row padding  px-0" >
+            <div class="col-lg-6 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Математика</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>онлайн</span>
+                </h2>
+                <br/>
+                <br/>
+                <h5 class="img-4-text">
+                    <span class="en-text">We select teachers with</span>
+                    <span class = 'ru-text'>Синусы и косинусы станут вашими друзьями</span>
+                </h5>
+                <h5 class="img-4-text">
+                    <span class="en-text">common interests and goals</span>
+                    <span class = 'ru-text'>И вы станете людьмиб которые познали знак</span>
+                </h5>
+                <h5 class="img-4-text">
+                    <span class="en-text">common interests and goals</span>
+                    <span class = 'ru-text'>бесконечности</span>
+                </h5>
+                <br/>
+                <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
+                    <span class="en-text">Submit application</span>
+                    <span class = 'ru-text'>Оставить заявку на пробный урок</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div>
+    <img class="image-top" src="/media/m1.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m2.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m3.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m4.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/>
+    <br/>
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
+            <div class="col-lg-6 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Запишитесь</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>на пробный урок</span>
+                </h2>
+            </div>
+            <div class="col-lg-6 block-one" style="padding-top: 75px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                    </div>
+                    <div class="form-group">
+                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                    </div>
+                    <div class="form-group">
+                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                    </div>
+                    <div class="d-inline-block" >
+                        <small class="text-muted">
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <br/>
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                        </small>
+                    </div>
+                    <div class="d-inline-block" style="padding-left: 50px;">
+                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                        <span class="en-text">submit</span>
+                        <span class = 'ru-text'>Оставить заявку</span>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <div>
+    <img class="image-top" src="/media/m5.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m6.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m6.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top" src="/media/m8.svg" class="img-fluid">
+    <br/><br/><br/><br/><br/>
+    </div>
+
+    <div class="container-fluid padding ">
+        <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
+            <div class="col-lg-6 block-one">
+                <h2 class="img-text-bold-4 move-down-50" >
+                    <span class="en-text">The trust should be built</span>
+                    <span class = 'ru-text'>Оставьте заявку</span>
+                </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'>на обучение</span>
+                </h2>
+            </div>
+            <div class="col-lg-6 block-one" style="padding-top: 75px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                    </div>
+                    <div class="form-group">
+                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                    </div>
+                    <div class="form-group">
+                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                    </div>
+                    <div class="d-inline-block" >
+                        <small class="text-muted">
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <br/>
+                                <span class="en-text">фыв</span>
+                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                        </small>
+                    </div>
+                    <div class="d-inline-block" style="padding-left: 50px;">
+                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                        <span class="en-text">submit</span>
+                        <span class = 'ru-text'>Оставить заявку</span>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/>
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-left">
+                <div class="col-md-4">
+                    <img src="/media/footer.jpg">
+                </div>
+                <div class="col-md-4">
+                    <h5>
+                        <span class="en-text">Learning</span>
+                        <span class = 'ru-text'>Обучение</span>
+                        
+                    </h5>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Process</span>
+                        <span class = 'ru-text'>Процесс</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Classes</span>
+                        <span class = 'ru-text'>Предметы</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Educators</span>
+                        <span class = 'ru-text'>Педагоги</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">QnA</span>
+                        <span class = 'ru-text'>Вопрос-ответ</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Price</span>
+                        <span class = 'ru-text'>Цена</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <h5>
+                        <span class="en-text">PRO2</span>
+                        <span class = 'ru-text'>PRO2</span>
+                    </h5>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">About Company</span>
+                        <span class = 'ru-text'>О школе</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#"  type="button" data-toggle="modal" data-target="#MyModalT">
+                        <span class="en-text">For educators</span>
+                        <span class = 'ru-text'>Педагогам</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Reviews</span>
+                        <span class = 'ru-text'>Отзывы</span>
+                    </a>
+                    <br/>
+                    <a class="footer-link" href="#">
+                        <span class="en-text">Privacy policy</span>
+                        <span class = 'ru-text'>Конфиденциальность</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}
