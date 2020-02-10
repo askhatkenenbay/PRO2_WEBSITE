@@ -443,3 +443,31 @@ color: #F04B5D;
     grid-template-columns: 50% 50%;
 }
 
+
+.ph1{
+    position:relative;
+    top: -20px;
+}
+.ph2{
+    position:relative;
+    top: -100px;
+}
+.ph3{
+    position:relative;
+    top: -30px;
+    left: -70px;
+}
+.asd{
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 55px;
+}
+.qwe{
+    font-family: Museo Sans Cyrl 500;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 55px;
+}
