@@ -27,7 +27,17 @@
                     <span class = 'ru-text'>&ensp;Создать Курс</span>
                 </a>    
             {% endif %}
+            {% if user.person_type %}
+                <a href="{% url 'survey-tutor' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Survey Tutor</span>
+                    <span class = 'ru-text'>&ensp;Создать Курс</span>
+                </a>
+            {% endif %}
             {% if user.is_paid %}
+                <a href="{% url 'survey' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Анкета</span>
+                    <span class = 'ru-text'>&ensp;Анкета</span>
+                </a>
                 {% for course in courses %}
                     {% if course.is_paid %}
                         <h1 style='display: none;' class='course-name'>{{ course.course_name }}</h1>

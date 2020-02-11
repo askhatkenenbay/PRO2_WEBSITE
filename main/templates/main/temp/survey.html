@@ -1,0 +1,108 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>zZz</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/personal.css' %}">
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <div class="row padding">
+        <div class="col-lg-3 left-side">
+            <img src="/media/Logo.svg" class="img-fluid">
+            <br/>
+            <div class="media photo">
+                <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+            </div>
+            <h5 class="center">{{user.name}}</h5>
+            <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                <span class="en-text">&ensp; My account</span>
+                <span class = 'ru-text'>&ensp;Личный кабинет</span>
+            </a>
+            {% if user.is_god %}
+                <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Create Course</span>
+                    <span class = 'ru-text'>&ensp;Создать Курс</span>
+                </a>    
+            {% endif %}
+            {% if user.is_paid %}
+                <a href="{% url 'survey' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Анкета</span>
+                    <span class = 'ru-text'>&ensp;Анкета</span>
+                </a>
+                {% for course in courses %}
+                    {% if course.is_paid %}
+                        <h1 style='display: none;' class='course-name'>{{ course.course_name }}</h1>
+                        <a href="{% url 'course-my' %}" id = "{{course.course_name}}" type ="button" class="btn btn-primary btn-custom course-list"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                            <span class="en-text">&ensp; {{ course.course_name }}</span>
+                            <span class = 'ru-text'>&ensp; {{ course.course_name }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-lg-8 right-side">
+            <h5>Last One: {{ temp.date }}</h5>
+            <h5>Client Name: {{ temp.client_name }}</h5>
+            <h5>Student Name: {{ temp.student_name }}</h5>
+            <h5>Goal: {{ temp.goal }}</h5>
+            <h5>Subject: {{ temp.subject }}</h5>
+            <h5>Money: {{ temp.money }}</h5>
+            <br/>
+            <form method="POST">
+                {% csrf_token %}
+                <h5>
+                    <span class="en-text">Goal</span>
+                    <span class = 'ru-text'>asd</span>
+                </h5>
+                <div class="form-group">
+                    <input required name ="user_goal" type="input-group-text" class="form-control" placeholder="Goal" >
+                </div>
+                <h5>
+                    <span class="en-text">Client Name</span>
+                    <span class = 'ru-text'>asd</span>
+                </h5>
+                <div class="form-group">
+                    <input required  name ="user_client" type="input-group-text" class="form-control" placeholder="Client Name" >
+                </div>
+                <h5>
+                    <span class="en-text">Student Name</span>
+                    <span class = 'ru-text'>asd</span>
+                </h5>
+                <div class="form-group">
+                    <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Student Name" >
+                </div>
+                <h5>
+                    <span class="en-text">Subject</span>
+                    <span class = 'ru-text'>asd</span>
+                </h5>
+                <div class="form-group">
+                    <input required  name ="user_subject" type="input-group-text" class="form-control" placeholder="Lessons" >
+                </div>
+                <h5>
+                    <span class="en-text">Money ready to pay</span>
+                    <span class = 'ru-text'>asd</span>
+                </h5>
+                <div class="form-group">
+                    <input required  name ="user_money" type="input-group-text" class="form-control" placeholder="Money ready to pay" >
+                </div>
+                <div class="d-inline-block" style="padding-left: 50px;">
+                <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                    <span class="en-text">submit</span>
+                    <span class = 'ru-text'>submit</span>
+                </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-1">
+            <!-- <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a> -->
+            <a href="{% url 'logout' %}" class="btn btn-primary btn-red">
+                <span class="en-text">Logout</span>
+                <span class = 'ru-text'>Выйти</span>
+            </a>
+        </div>
+    </div>
+    <script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}

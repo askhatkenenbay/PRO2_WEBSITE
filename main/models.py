@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from PIL import Image
 from users.managers import CustomUserManager
-
+import datetime
 class Person(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=50)
     email = models.EmailField(_('email address'),  primary_key=True)
@@ -123,6 +123,29 @@ class HomeworkPoints(models.Model):
     points = models.CharField(max_length=250)
     def __str__(self):
         return ""+self.course_name+"-"+self.points
+
+class SurveyStudent(models.Model):
+    email = models.CharField(max_length=250, default="empty")
+    student_name = models.CharField(max_length=100)
+    client_name = models.CharField(max_length=100)
+    goal = models.CharField(max_length=1000)
+    subject = models.CharField(max_length=500)
+    money = models.CharField(max_length=500)
+    date = models.DateField(_("Date"), default=datetime.date.today)
+    class Meta:
+        get_latest_by = 'date'
+    def __str__(self):
+        return ""+self.student_name+"-"+self.goal+"-"+self.email
+
+class SurveyTutor(models.Model):
+    email = models.CharField(max_length=250, default="empty")
+    date = models.DateField(_("Date"), default=datetime.date.today)
+    money = models.CharField(max_length=500)
+    rec = models.CharField(max_length=500)
+    class Meta:
+        get_latest_by = 'date'
+    def __str__(self):
+        return ""+self.email+"-"+self.money+"-"+self.rec
 
     
       

@@ -363,3 +363,38 @@ def math(request):
         return redirect('main/temp/physics.html')
     return render(request,'main//temp/math.html')
 
+@active_student_required
+def survey(request):
+    if request.method == 'POST':
+        goal = request.POST.get('user_goal', None)
+        client = request.POST.get('user_client', None)
+        name = request.POST.get('user_name', None)
+        subject = request.POST.get('user_subject', None)
+        money = request.POST.get('user_money', None)
+        email = request.user.email
+        temp = SurveyStudent(student_name = name, client_name=client,goal=goal,subject=subject,money=money,email=email)
+        temp.save()
+        messages.success(request, f'done')
+        return redirect('survey')
+    temp = SurveyStudent.objects.latest()
+    context = {
+        'temp' : temp
+    }
+    return render(request,'main/temp/survey.html',context)
+
+@active_teacher_required
+def survey_tutor(request):
+    if request.method == 'POST':
+        money = request.POST.get('user_salary', None)
+        rec = request.POST.get('user_rec', None)
+        email = request.user.email
+        temp = SurveyTutor(money=money,rec=rec,email=email)
+        temp.save()
+        messages.success(request, f'done')
+        return redirect('survey-tutor')
+    temp = SurveyTutor.objects.latest()
+    context = {
+        'temp' : temp
+    }
+    return render(request,'main/temp/survey-tutor.html',context)
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, CourseTaken
+from .models import Person, CourseTaken, SurveyStudent,SurveyTutor
 from django.contrib.auth.admin import UserAdmin
 from users.forms import CustomUserCreationForm, CustomUserChangeForm
 from .forms import CourseTakenForm, CourseTakenChangeForm
@@ -47,6 +47,16 @@ class CourseTakenAdmin(admin.ModelAdmin):
     ordering = ('user_email',)
 
 
+class SurveyStudentAdmin(admin.ModelAdmin):
+    model = SurveyStudent
+    list_display = ('email', 'student_name','client_name','goal','subject','money','date')
+
+class SurveyTutorAdmin(admin.ModelAdmin):
+    model = SurveyTutor
+    list_display = ('email', 'date','money','rec')
+
 admin.site.register(Person, CustomUserAdmin)
 admin.site.register(CourseTaken,CourseTakenAdmin)
+admin.site.register(SurveyStudent, SurveyStudentAdmin)
+admin.site.register(SurveyTutor,SurveyTutorAdmin)
 
