@@ -471,3 +471,10 @@ color: #F04B5D;
     font-size: 45px;
     line-height: 55px;
 }
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}

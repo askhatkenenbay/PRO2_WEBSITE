@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block title %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Physics</title>
+    <title>For Other</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -12,6 +12,37 @@
 {% endblock %}
 
 {% block content %}
+<div id="MyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+            <div class="modal-content" style="background-color: blue;">
+                <div class= "modal-header">
+                    <h2 class="">
+                        <span class="en-text">Your data</span>
+                        <span class = 'ru-text'>Ваши данные</span>
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Your Name:</label>
+                            <input required name ="user_name" type="input-group-text" class="form-control" placeholder="Your Name" >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input required name ="user_email" type="email" class="form-control" placeholder="Enter email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Phone:</label>
+                            <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Your Phone" >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
 <br/>
     <footer class="footer">
         <div class="row padding">
@@ -107,52 +138,42 @@
         </div>
     </div>
     <div class="empty-padding"></div>
-    <img class="image-top ph1" src="/media/ph1.jpg" class="img-fluid">
-    <div class="container-fluid padding ">
-        <div class="row padding  px-0" >
-            <div class="col-lg-8 block-one">
-                <h2 class="img-text-bold-4 qwe" >
-                    <span class="en-text">The trust should be built</span>
-                    <span class = 'ru-text'>Физика - увлекательно</span>
-                </h2>
-                <h2 class="img-text-bold-4 qwe">
-                    <span class="en-text">between the teacher</span>
-                    <span class = 'ru-text'>познавательно и легко</span>
-                </h2>
-                <h2 class="img-text-bold-4 qwe">
-                    <span class="en-text">and the student</span>
-                    <span class = 'ru-text'>вместе с PRO2</span>
-                </h2>
-                <br/>
-                <br/>
-                <h5 class="img-4-text">
-                    <span class="en-text">We select teachers with</span>
-                    <span class = 'ru-text'>Собственная методика</span>
-                </h5>
-                <h5 class="img-4-text">
-                    <span class="en-text">common interests and goals</span>
-                    <span class = 'ru-text'>и реальные задачки из жизни</span>
-                </h5>
-                <br/>
-                <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
-                    <span class="en-text">Submit application</span>
-                    <span class = 'ru-text'>Оставить заявку на пробный урок</span>
-                </a>
-            </div>
-            <div class="col-lg-3 block-one">
-                <img class="image-top ph2" src="/media/ph2.svg" class="img-fluid">
-                <img class="image-top ph3" src="/media/ph3.svg" class="img-fluid">
-            </div>
-        </div>
-    </div>
 
-    <br/><br/><br/><br/><br/><br/>
+    <div style="text-align: center;
+    vertical-align: middle;">
+        <h2 class="img-text-bold-4 move-down-50 asd">
+            <span class="en-text">The trust should be built</span>
+            <span class = 'ru-text'>Изучайте точные науки</span>
+        </h2>
+        <h2 class="img-text-bold-4 asd">
+            <span class="en-text">between the teacher</span>
+            <span class = 'ru-text'>интересно и легко</span>
+        </h2>
+        <h2 class="img-text-bold-4 asd">
+            <span class="en-text">between the teacher</span>
+            <span class = 'ru-text'>с PRO2</span>
+        </h2>
+        <br/>
+        <br/>
+        <h5 class="img-4-text">
+            <span class="en-text">We select teachers with</span>
+            <span class = 'ru-text'>Собственная методика и индивидуальный подход</span>
+        </h5>
+        <h5 class="img-4-text">
+            <span class="en-text">common interests and goals</span>
+            <span class = 'ru-text'>к каждому студенту</span>
+        </h5>
+        <br/>
+        <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
+            <span class="en-text">Submit application</span>
+            <span class = 'ru-text'>Оставить заявку на пробный урок</span>
+        </a>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <div>
-    <img class="image-top" src="/media/phys1.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/>
-    <img class="image-top" src="/media/phys2.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/>
-    <img class="image-top" src="/media/phys3.svg" class="img-fluid">
+    <img class="image-top center" src="/media/q1.svg">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top center" src="/media/q2.svg">
     <br/><br/><br/><br/><br/>
     <br/>
     <div class="container-fluid padding ">
@@ -198,15 +219,17 @@
             </div>
         </div>
     </div>
-    <br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
     <div>
-    <img class="image-top" src="/media/phys4.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/>
-    <img class="image-top" src="/media/phys5.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/>
-    <img class="image-top" src="/media/phys6.svg" class="img-fluid">
-    <br/><br/><br/><br/><br/><br/><br/>
-    <img class="image-top" src="/media/phys7.svg" class="img-fluid">
+    <img class="image-top center" src="/media/q3.svg" >
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top center" style="width: 50%;" src="/media/q4.svg" >
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top center" src="/media/q5.svg">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top center" src="/media/q6.svg">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <img class="image-top center" style="width: 50%;" src="/media/q7.svg">
     <br/><br/><br/><br/><br/>
     </div>
 
@@ -215,11 +238,7 @@
             <div class="col-lg-6 block-one">
                 <h2 class="img-text-bold-4 move-down-50" >
                     <span class="en-text">The trust should be built</span>
-                    <span class = 'ru-text'>Оставьте заявку</span>
-                </h2>
-                <h2 class="img-text-bold-4">
-                    <span class="en-text">between the teacher</span>
-                    <span class = 'ru-text'>на обучение</span>
+                    <span class = 'ru-text'>Свяжитесь со мной</span>
                 </h2>
             </div>
             <div class="col-lg-6 block-one" style="padding-top: 75px;">

@@ -12,6 +12,38 @@
 {% endblock %}
 
 {% block content %}
+<div id="MyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+            <div class="modal-content" style="background-color: blue;">
+                <div class= "modal-header">
+                    <h2 class="">
+                        <span class="en-text">Your data</span>
+                        <span class = 'ru-text'>Ваши данные</span>
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Your Name:</label>
+                            <input required name ="user_name" type="input-group-text" class="form-control" placeholder="Your Name" >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input required name ="user_email" type="email" class="form-control" placeholder="Enter email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Phone:</label>
+                            <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Your Phone" >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+
 <br/>
     <footer class="footer">
         <div class="row padding">
@@ -35,8 +67,8 @@
                 <div class="dropdown for-whom">
                     <a href="#" class="dropdown-toggle " data-toggle="dropdown">For whom</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Action</a>
-                        <a href="#" class="dropdown-item">Another action</a>
+                        <a href="{% url 'for-student' %}" class="dropdown-item">Student</a>
+                        <a href="{% url 'for-other' %}" class="dropdown-item">Other</a>
                     </div>
                 </div>
                 

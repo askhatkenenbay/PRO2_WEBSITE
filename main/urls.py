@@ -26,4 +26,6 @@ urlpatterns = [
     path('our-courses/math',views.math,name="math"),
     path('survey/',views.survey,name="survey"),
     path('survey/tutor/',views.survey_tutor,name="survey-tutor"),
+    path('for-students/', views.for_student, name="for-student"),
+    path('for-others/',views.for_other,name="for-other"),
 ]
