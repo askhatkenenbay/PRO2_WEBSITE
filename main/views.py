@@ -320,7 +320,7 @@ def chemistry(request):
         recipient_list = [request.POST.get('user_email', None),]
         send_mail( subject, message, email_from, recipient_list )
         messages.success(request, f'sent')
-        return redirect('main/temp/physics.html')
+        return redirect('chemistry')
     return render(request,'main/temp/chemistry.html')
 def physics(request):
     if request.method == 'POST':
@@ -340,7 +340,7 @@ def physics(request):
         recipient_list = [request.POST.get('user_email', None),]
         send_mail( subject, message, email_from, recipient_list )
         messages.success(request, f'sent')
-        return redirect('main/temp/physics.html')
+        return redirect('physics')
     return render(request,'main/temp/physics.html')
 def math(request):
     if request.method == 'POST':
@@ -360,7 +360,7 @@ def math(request):
         recipient_list = [request.POST.get('user_email', None),]
         send_mail( subject, message, email_from, recipient_list )
         messages.success(request, f'sent')
-        return redirect('main/temp/physics.html')
+        return redirect('math')
     return render(request,'main//temp/math.html')
 
 @active_student_required
