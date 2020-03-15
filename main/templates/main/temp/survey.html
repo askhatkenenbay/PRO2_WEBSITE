@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    <title>zZz</title>
+    <title>Survey</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/personal.css' %}">
 {% endblock %}
 
@@ -44,63 +44,28 @@
             {% endif %}
         </div>
         <div class="col-lg-8 right-side">
-            <h5>Last One: {{ temp.date }}</h5>
-            <h5>Client Name: {{ temp.client_name }}</h5>
-            <h5>Student Name: {{ temp.student_name }}</h5>
-            <h5>Goal: {{ temp.goal }}</h5>
-            <h5>Subject: {{ temp.subject }}</h5>
-            <h5>Money: {{ temp.money }}</h5>
-            <br/>
-            <form method="POST">
-                {% csrf_token %}
-                <h5>
-                    <span class="en-text">Goal</span>
-                    <span class = 'ru-text'>asd</span>
-                </h5>
-                <div class="form-group">
-                    <input required name ="user_goal" type="input-group-text" class="form-control" placeholder="Goal" >
+            <h2>Химия на английском языке</h2>
+            <h5>Заказ №348643113</h5>
+            <div class="boxMe">
+                <div class="media" style="display: inline;">
+                    <img style="width: 80px;height: 80px;" class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
                 </div>
-                <h5>
-                    <span class="en-text">Client Name</span>
-                    <span class = 'ru-text'>asd</span>
-                </h5>
-                <div class="form-group">
-                    <input required  name ="user_client" type="input-group-text" class="form-control" placeholder="Client Name" >
-                </div>
-                <h5>
-                    <span class="en-text">Student Name</span>
-                    <span class = 'ru-text'>asd</span>
-                </h5>
-                <div class="form-group">
-                    <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Student Name" >
-                </div>
-                <h5>
-                    <span class="en-text">Subject</span>
-                    <span class = 'ru-text'>asd</span>
-                </h5>
-                <div class="form-group">
-                    <input required  name ="user_subject" type="input-group-text" class="form-control" placeholder="Lessons" >
-                </div>
-                <h5>
-                    <span class="en-text">Money ready to pay</span>
-                    <span class = 'ru-text'>asd</span>
-                </h5>
-                <div class="form-group">
-                    <input required  name ="user_money" type="input-group-text" class="form-control" placeholder="Money ready to pay" >
-                </div>
-                <div class="d-inline-block" style="padding-left: 50px;">
-                <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
-                    <span class="en-text">submit</span>
-                    <span class = 'ru-text'>submit</span>
-                </button>
-                </div>
-            </form>
+                <h5 style="display: inline;">{{user.name}}</h5><Br>
+                <h4 style="display: inline;">Создан</h4><span>-</span><h4 style="display: inline;">{{temp.email}}</h4><Br>
+                <h4 style="display: inline;">Фио</h4><span>-</span><h4 style="display: inline;">{{temp.fio}}</h4><Br>
+                <h4 style="display: inline;">Предмет</h4><span>-</span><h4 style="display: inline;">{{temp.subject}}</h4><Br>
+                <h4 style="display: inline;">Бюджет</h4><span>-</span><h4 style="display: inline;">{{temp.money}}</h4><Br>
+                <h4 style="display: inline;">Когда</h4><span>-</span><h4 style="display: inline;">{{temp.when}}</h4><Br>
+                <h4 style="display: inline;">Цель</h4><span>-</span><h4 style="display: inline;">{{temp.goal}}</h4><Br>
+                <h4 style="display: inline;">Ученик</h4><span>-</span><h4 style="display: inline;">{{temp.student_name}}</h4><Br>
+                <h4 style="display: inline;">Телефон</h4><span>-</span><h4 style="display: inline;">{{temp.phone}}</h4><Br>    
+            </div>
         </div>
         <div class="col-lg-1">
             <!-- <a href="{% url 'main-home' %}" class="btn btn-primary btn-red">Home</a> -->
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-red">
+            <a href="{% url 'survey-update' %}" class="btn btn-primary btn-red">
                 <span class="en-text">Logout</span>
-                <span class = 'ru-text'>Выйти</span>
+                <span class = 'ru-text'>Update</span>
             </a>
         </div>
     </div>

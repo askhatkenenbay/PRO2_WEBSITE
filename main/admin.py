@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Person, CourseTaken, SurveyStudent,SurveyTutor
+from .models import *
 from django.contrib.auth.admin import UserAdmin
 from users.forms import CustomUserCreationForm, CustomUserChangeForm
-from .forms import CourseTakenForm, CourseTakenChangeForm
+from .forms import *
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -49,14 +49,69 @@ class CourseTakenAdmin(admin.ModelAdmin):
 
 class SurveyStudentAdmin(admin.ModelAdmin):
     model = SurveyStudent
-    list_display = ('email', 'student_name','client_name','goal','subject','money','date')
+    list_display = ('goal','subject','money','date','email')
 
 class SurveyTutorAdmin(admin.ModelAdmin):
     model = SurveyTutor
-    list_display = ('email', 'date','money','rec')
+    list_display = ('email', 'time','price','subjects')
+
+class AnswerAdmin(admin.ModelAdmin):
+    model = Answer
+    list_display = ('answerOne', 'answerOneText','answerTwo','answerTwoText','answerThree','answerThreeText','answerFourText','answerFiveText')
+
+class CourseAdmin(admin.ModelAdmin):
+    add_form = CourseRegisterForm
+    model = Course
+    list_display = ('name', 'course_type', 'creator_email',)
+    list_filter = ('name', 'course_type', 'creator_email',)
+    ordering = ('creator_email',)
+
+class TheoryAdmin(admin.ModelAdmin):
+    add_form = TheoryRegisterForm
+    model = Theory
+    list_display = ('creator_email',"course_name","theory_name","order",)
+    list_filter = ('creator_email',"course_name","theory_name","order",)
+    ordering = ('creator_email',)
+
+class TheoryTaskAdmin(admin.ModelAdmin):
+    add_form = TheoryTaskRegisterForm
+    model = TheoryTask
+    list_display = ('creator_email',"course_name","theory_name","task_type","task",)
+    list_filter = ('creator_email',"course_name","theory_name","task_type","task",)
+    ordering = ('creator_email',)
+
+class TheoryGraphicAdmin(admin.ModelAdmin):
+    add_form = TheoryGraphicRegisterForm
+    model = TheoryGraphic
+    list_display = ('creator_email',"course_name","theory_name","order","graphic")
+    list_filter = ('creator_email',"course_name","theory_name","order","graphic")
+    ordering = ('creator_email',)
+
+class TheoryFormulaAdmin(admin.ModelAdmin):
+    add_form = TheoryFormulaRegisterForm
+    model = TheoryFormula
+    list_display = ('creator_email',"course_name","theory_name","header","main","footer","category",)
+    list_filter = ('creator_email',"course_name","theory_name","header","main","footer","category",)
+    ordering = ('creator_email',)
+
+class TheoryLawAdmin(admin.ModelAdmin):
+    add_form = TheoryRegisterForm
+    model = Theory
+    list_display = ('creator_email',"course_name","theory_name","name","text","more",)
+    list_filter = ('creator_email',"course_name","theory_name","name","text","more",)
+    ordering = ('creator_email',)
+
+
 
 admin.site.register(Person, CustomUserAdmin)
+admin.site.register(Answer, AnswerAdmin)
 admin.site.register(CourseTaken,CourseTakenAdmin)
 admin.site.register(SurveyStudent, SurveyStudentAdmin)
 admin.site.register(SurveyTutor,SurveyTutorAdmin)
+admin.site.register(Course,CourseAdmin)
+admin.site.register(Theory,TheoryAdmin)
 
+admin.site.register(TheoryTask,TheoryTaskAdmin)
+admin.site.register(TheoryGraphic,TheoryGraphicAdmin)
+admin.site.register(TheoryFormula,TheoryFormulaAdmin)
+admin.site.register(TheoryLaw,TheoryLawAdmin)

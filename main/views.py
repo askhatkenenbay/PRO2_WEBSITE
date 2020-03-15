@@ -4,7 +4,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required, user_passes_test
 from users.forms import PersonUpdateForm
 from django.contrib import messages
-from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterForm, TheoryGraphicRegisterForm, TheoryFormulaRegisterForm, TheoryLawRegisterForm, HomeworkForm, HomeworkPointsForm
+from .forms import CourseRegisterForm, TheoryRegisterForm, TheoryTaskRegisterForm, TheoryGraphicRegisterForm, TheoryFormulaRegisterForm, TheoryLawRegisterForm, HomeworkForm, HomeworkPointsForm, SurveyStudentForm, AnswerForm
 from .models import Course
 from django.core.mail import send_mail
 from django.conf import settings
@@ -88,11 +88,13 @@ def practice(request):
     theory_task = TheoryTask.objects.filter(theory_name = cur_theory)
     theory_law = TheoryLaw.objects.filter(theory_name = cur_theory)
     theory_graphic =TheoryGraphic.objects.filter(theory_name = cur_theory)
+    theory_formula = TheoryFormula.objects.filter(theory_name = cur_theory)
     context = {
         'theory' : theory,
         'task' : theory_task,
         'law' : theory_law,
-        'graphic' : theory_graphic
+        'graphic' : theory_graphic,
+        "formula" : theory_formula
     }
     return render(request, 'main/practice.html',context)
 
@@ -279,15 +281,6 @@ def create_homework_points(request):
         form = HomeworkPointsForm()
     return render(request,'main/create-homework-points.html', { 'form' : form })
 
-
-# @login_required
-# def my_courses(request):
-#     context = {
-#         'courses' : Course.objects.filter(creator_email=request.user.email)
-#     }
-#     return render(request,'main/my-courses.html', context)
-
-
 def courses(request):
     context = {
         'courses' : Course.objects.all()
@@ -366,18 +359,24 @@ def math(request):
 @active_student_required
 def survey(request):
     if request.method == 'POST':
-        goal = request.POST.get('user_goal', None)
-        client = request.POST.get('user_client', None)
-        name = request.POST.get('user_name', None)
-        subject = request.POST.get('user_subject', None)
-        money = request.POST.get('user_money', None)
+        goal = request.POST.get('goal', None)
+        subject = request.POST.get('subject', None)
+        money = request.POST.get('money', None)
+        date = request.POST.get('date', None)
+        fio = request.POST.get('fio', None)
+        language = request.POST.get('language', None)
+        when = request.POST.get('when', None)
+        student_name = request.POST.get('student_name', None)
+        phone = request.POST.get('phone', None)
         email = request.user.email
-        temp = SurveyStudent(student_name = name, client_name=client,goal=goal,subject=subject,money=money,email=email)
+        temp = SurveyStudent(goal=goal,fio=fio,subject=subject,money=money,date=date,language=language,when=when,student_name=student_name,phone=phone,email=email)
         temp.save()
         messages.success(request, f'done')
         return redirect('survey')
-    temp = SurveyStudent.objects.latest()
+    p_form = SurveyStudentForm(instance=request.user)
+    temp = SurveyStudent.objects.filter(email = request.user.email).latest()
     context = {
+        'p_form' : p_form,
         'temp' : temp
     }
     return render(request,'main/temp/survey.html',context)
@@ -394,7 +393,7 @@ def survey_tutor(request):
         return redirect('survey-tutor')
     temp = SurveyTutor.objects.latest()
     context = {
-        'temp' : temp
+        'temp' : temp 
     }
     return render(request,'main/temp/survey-tutor.html',context)
 
@@ -439,4 +438,53 @@ def for_other(request):
         messages.success(request, f'sent')
         return redirect('main/temp/for-other.html')
     return render(request,'main/temp/for-other.html')
+
+
+def survey_update(request):
+    if request.method == 'POST':
+        form = SurveyStudentForm(request.POST)
+        if form.is_valid():
+            goal = request.POST.get('goal', None)
+            subject = request.POST.get('subject', None)
+            money = request.POST.get('money', None)
+            date = request.POST.get('date', None)
+            fio = request.POST.get('fio', None)
+            language = request.POST.get('language', None)
+            when = request.POST.get('when', None)
+            student_name = request.POST.get('student_name', None)
+            phone = request.POST.get('phone', None)
+            email = request.user.email
+            temp = SurveyStudent(goal=goal,fio=fio,subject=subject,money=money,date=date,language=language,when=when,student_name=student_name,phone=phone,email=email)
+            temp.save()
+            messages.success(request, f'done')
+            return redirect('survey')
+    p_form = SurveyStudentForm(instance=request.user)
+    context = {
+        'p_form' : p_form
+    }
+    return render(request,'main/temp/surveyUpdate.html',context)
+
+def yoda(request):
+    if request.method == 'POST':
+        goal = request.POST.get('goal', None)
+        subject = request.POST.get('subject', None)
+        money = request.POST.get('money', None)
+        date = request.POST.get('date', None)
+        fio = request.POST.get('fio', None)
+        language = request.POST.get('language', None)
+        when = request.POST.get('when', None)
+        student_name = request.POST.get('student_name', None)
+        phone = request.POST.get('phone', None)
+        email = request.user.email
+        temp = SurveyStudent(goal=goal,fio=fio,subject=subject,money=money,date=date,language=language,when=when,student_name=student_name,phone=phone,email=email)
+        temp.save()
+        messages.success(request, f'done')
+        return redirect('survey')
+    p_form = AnswerForm(instance=request.user)
+    temp = SurveyStudent.objects.filter(email = request.user.email).latest()
+    context = {
+        'p_form' : p_form,
+        'temp' : temp
+    }
+    return render(request,'main/temp/yoda.html',context)
 

@@ -230,4 +230,7 @@ left: 490px;
 top: 114px;
 padding-top: 25px;
 }
-
+.boxMe{
+    background: #FFFFFF;
+    border-radius: 6px;
+}

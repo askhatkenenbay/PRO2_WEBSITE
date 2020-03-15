@@ -1,0 +1,70 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Survey</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/personal.css' %}">
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <div class="row padding">
+        <div class="col-lg-3 left-side">
+            <img src="/media/Logo.svg" class="img-fluid">
+            <br/>
+            <div class="media photo">
+                <img class="rounded-circle account-img custom-img" src="{{ user.image.url }}">
+            </div>
+            <h5 class="center">{{user.name}}</h5>
+            <a href="{% url 'main-personal_page' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                <span class="en-text">&ensp; My account</span>
+                <span class = 'ru-text'>&ensp;Личный кабинет</span>
+            </a>
+            {% if user.is_god %}
+                <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Create Course</span>
+                    <span class = 'ru-text'>&ensp;Создать Курс</span>
+                </a>    
+            {% endif %}
+            {% if user.is_paid %}
+                <a href="{% url 'survey' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                    <span class="en-text">&ensp; Анкета</span>
+                    <span class = 'ru-text'>&ensp;Анкета</span>
+                </a>
+                {% for course in courses %}
+                    {% if course.is_paid %}
+                        <h1 style='display: none;' class='course-name'>{{ course.course_name }}</h1>
+                        <a href="{% url 'course-my' %}" id = "{{course.course_name}}" type ="button" class="btn btn-primary btn-custom course-list"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                            <span class="en-text">&ensp; {{ course.course_name }}</span>
+                            <span class = 'ru-text'>&ensp; {{ course.course_name }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-lg-8 right-side">
+            <div class="result white-back">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">
+                            <span class="en-text">Personal Info</span>
+                            <span class = 'ru-text'>qweqweqew</span>
+                        </legend>
+                        {{ p_form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">
+                            <span class="en-text">Update</span>
+                            <span class = 'ru-text'>next</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+    <script src="{% static 'main/change_language.js' %}"></script>
+{% endblock content %}

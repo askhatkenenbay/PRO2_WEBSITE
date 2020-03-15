@@ -85,8 +85,8 @@
             <div class="col-lg-10">
             </div>
             <div class="col-lg-2">
-                <button class="language"  onclick="change_lan('EN')">English</a>
-                <button class="language" onclick="change_lan('RU')">Русский</a>
+                <button class="asdasd"  onclick="change_lan('EN')">En</a>
+                <button class="asdasd" onclick="change_lan('RU')">Ру</a>
             </div>
         </div>
     </footer>
@@ -99,17 +99,29 @@
             </div>
             <div class="col-lg-2">
                 <div class="dropdown for-whom">
-                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">For whom</a>
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+                        <span class="en-text">For whom</span>
+                        <span class = 'ru-text'>Для кого</span>
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="{% url 'for-student' %}" class="dropdown-item">Student</a>
-                        <a href="{% url 'for-other' %}" class="dropdown-item">Other</a>
+                        <a href="{% url 'for-student' %}" class="dropdown-item">
+                            <span class="en-text">Student</span>
+                            <span class = 'ru-text'>Школьникам и студентам</span>
+                        </a>
+                        <a href="{% url 'for-other' %}" class="dropdown-item">
+                            <span class="en-text">Other</span>
+                            <span class = 'ru-text'>Взрослым</span>
+                        </a>
                     </div>
                 </div>
                 
             </div>
             <div class="col-lg-2">
                 <div class="dropdown our-courses">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="en-text">Our courses</span>
+                        <span class = 'ru-text'>Наши курсы</span>
+                    </a>
                     <div class="dropdown-menu">
                         <a href="{% url 'math' %}" class="dropdown-item">
                             <span class="en-text">Math</span>
@@ -127,14 +139,8 @@
                 </div>
             </div>
             <div class="col-lg-2">
-                <a href="{% url 'courses' %}" class="btn btn-danger btn-sign-in">
-                    <h2 class="to-home-text">
-                        <span class="en-text">Courses</span>
-                        <span class = 'ru-text'>Курсы</span>
-                    </h2>
-                </a>
-            </div>
 
+            </div>
             {% if user.is_authenticated %}
             <div class="col-lg-2">
                 <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
@@ -157,15 +163,16 @@
                 <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
                     <h2 class="sign-in-text">
                         <span class = 'en-text'>Sign in</span>
-                        <span class = 'ru-text'>Войти</span>
+                        <span class = 'ru-text' style="width: 90;height: 38px; position: relative; top: +10px;">Войти</span>
                     </h2>
                 </a>
             </div>
             <div class="col-lg-2">
-                <a href="{% url 'register' %}" class="btn btn-primary btn-red">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red" style="border-color: #F04B5D;">
                     <h2 class="btn-red-text">
                         <span class = 'en-text'>Start for free</span>
-                        <span class = 'ru-text'>Начать бесплатно</span>
+                        <span class = 'ru-text' style="position: relative; left: -15px;top: +10px;
+                            width:170px;height: 38px;">Начать бесплатно</span>
                     </h2>
                 </a>
             </div>
@@ -175,276 +182,103 @@
     <div class="empty-padding"></div>
     <!-- Title -->
     <div class="title">
-        <h1 class="title-text">
-            <span class = 'en-text'>Online Chemistry</span>
-            <span class = 'ru-text'>Онлайн-школа</span>
-        </h1>
-        <h1 class="title-text">
-            <span class = 'en-text'>and physics school</span>
-            <span class = 'ru-text'>по химии и физике</span>
-        </h1>
-        <br/>
+        <div style="padding-bottom: 42px;margin-bottom: 42px;">
+            <img  class="img-fluid image-top ru-text" style="position:relative; left: +200px;" src="/media/mr1.svg" >
+            <img  class="img-fluid image-top en-text" style="position:relative; left: +200px;" src="/media/mee01.svg">
+        </div>
         <div class="row text-center ">
-            <p class="title-paragraph"><span class="en-text"> We make learning interesting and exciting. We teach to think
-                and understand how things work. We help to apply knowledge
-                in practice and daily life.</span>
-                <span class="ru-text">
-                    Делаем обучение интересным и захватывающим. Учим думать и видеть
-                    суть вещей. Помогаем применить полученные знания на практике и в жизни.
-                </span>
-            </p>
+            <img  class="img-fluid image-top ru-text" style="position:relative; left: +200px;" src="/media/mr2.svg" >
+            <img  class="img-fluid image-top en-text" style="position:relative; left: +200px;" src="/media/mee02.svg" >
         </div>
     </div>
 
     <!-- Image 1 -->
-    <div class="container-fluid padding orange">
+    <div  class="container-fluid padding orange" style="width: 920px; height: 393px;">
         <div class="row padding">
             <div class="col-lg-8 block-one">
-                <h2 class="green-text">
-                    <span class="en-text">For student</span>
-                    <span class="ru-text">Школьникам и студентам</span>
-                </h2>
-                <h2 class="img-text-bold" >
-                    <span class="en-text">to improve academic</span>
-                    <span class = 'ru-text'>для повышения успеваемости</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">performance and apply knowledge in practice</span>
-                    <span class = 'ru-text'>и применения знаний на практике</span>
-                </h2">
+                <img class="image-top img-fluid" style="position: relative; top: -65px; padding-left: 45px;" src="/media/ts0.svg"></br>
+                <img class="image-top img-fluid" style="position: relative; top: -15px; padding-left: 45px;" src="/media/ts1.svg">
                 <br/>
-                <br/>
-                <a href="{% url 'courses' %}"  type="button" class="btn btn-primary btn-white" data-toggle="modal" data-target="#MyModal">
+                <br/><br/>
+                <span style="padding-left: 45px;"></span><a href="{% url 'courses' %}"  type="button" class="btn btn-primary btn-white" data-toggle="modal" data-target="#MyModal">
                         <span class="en-text">Get Started</span>
-                        <span class = 'ru-text'>Наши Курсы</span>
+                        <span class = 'ru-text'>Оставить заявку</span>
                 </a>
                 <a href="#" class="btn btn-primary btn-pink">
                     <span class="en-text">In more detail</span>
                     <span class = 'ru-text'>Подробнее</span>
                 </a>
             </div>
-
             <div class="col-lg-4">
-                <img class="image-top" src="/media/Frame_1.svg" class="img-fluid">
+                <img class="image-top img-fluid" style="position: relative; top: +150px;" src="/media/ts2.svg">
             </div>
         </div>
     </div>
     <div class="empty-padding"></div>
     <!-- Image 2 -->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6">
-                <img src="/media/Frame_2.svg" class="img-fluid">
-            </div>
-            <div class="col-lg-6 move-down-150">
-                <h2 class="red-text">
-                    <span class="en-text">Learn chemistry and physics</span>
-                    <span class = 'ru-text'>Изучайте химию и физику</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">using computer</span>
-                    <span class = 'ru-text'>в удобном для вас формате,</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">or smartphone</span>
-                    <span class = 'ru-text'>используя компьютер или</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class = 'ru-text'>смартфон</span>
-                </h2>
-            </div>
-        
-        </div>
-    </div>
+    <img  style="padding-top: 200px;" class="img-fluid image-top ru-text" src="/media/mr3.svg" >
+    <img  class="img-fluid image-top en-text" src="/media/mee1.svg" >
     <div class="empty-padding"></div>
     <!-- Image 3 -->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6 move-down-80">
-                <h2 class="red-text">
-                    <span class="en-text">We monitor your progress,</span>
-                    <span class = 'ru-text'>Следим за вашим прогрессом,</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">analyze and correct</span>
-                    <span class = 'ru-text'>анализируем</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">mistakes send you the</span>
-                    <span class = 'ru-text'>и исправляем ошибки,</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">results of</span>
-                    <span class = 'ru-text'>присылаем результаты</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">your performance</span>
-                    <span class = 'ru-text'>проведения занятий</span>
-                </h2>
-            </div>
-            <div class="col-lg-6">
-                <img src="/media/Frame_3.svg" class="img-fluid">
-            </div>
-        </div>
-    </div>
+    <img  style="padding-top: 200px; padding-bottom: 200px;" class="img-fluid image-top ru-text" src="/media/mr4.svg" >
+    <img  class="img-fluid image-top en-text" src="/media/mee2.svg" >
     <div class="empty-padding"></div>
     <!-- Image 4 -->
     <div id="four"  >
         <div class="row padding">
             <div class="col-lg-8 block-one">
-                <h2 class="img-text-bold-4 move-down-50" >
-                    <span class="en-text">The trust should be built</span>
-                    <span class = 'ru-text'>Между педагогом</span>
-                </h2>
-                <h2 class="img-text-bold-4">
-                    <span class="en-text">between the teacher</span>
-                    <span class = 'ru-text'>и учеником должна</span>
-                </h2>
-                <h2 class="img-text-bold-4">
-                    <span class="en-text">and the student</span>
-                    <span class = 'ru-text'>возникнуть &lt;&lt;химия&gt;&gt;</span>
-                </h2>
-                <h2 class="img-text-bold-4">
-                    <span class = 'ru-text'>и &lt;&lt;симпатия&gt;&gt;.</span>
-                </h2>
+                <img  class="img-fluid image-top ru-text" style="position: relative; top: +75px; left: +40px" src="/media/mrt1.svg" >
+                <img  class="img-fluid image-top en-text" style="position: relative; top: +75px; left: +40px" src="/media/mee03.svg" >
                 <br/>
                 <br/>
-                <h5 class="img-4-text">
-                    <span class="en-text">We select teachers with</span>
-                    <span class = 'ru-text'>Подбираем педагогов с общими</span>
-                </h5>
-                <h5 class="img-4-text">
-                    <span class="en-text">common interests and goals</span>
-                    <span class = 'ru-text'>интересами и целями.</span>
-                </h5>
+                <img  class="img-fluid image-top ru-text" style="position: relative; top: +75px;left: +40px" src="/media/mrt2.svg" >
+                <img  class="img-fluid image-top en-text" style="position: relative; top: +75px;left: +40px" src="/media/mee04.svg" >
                 <br/>
-                <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
+                <a href="{% url 'courses' %}" style="position: relative; top: +115px;left: +40px; width: 170px;height: 48px;" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
                     <span class="en-text">Submit application</span>
-                    <span class = 'ru-text'>Оставить заявку</span>
+                    <span class = 'ru-text' style="width: 170px;height: 48px;position: relative; top: +7px;left: -8px;">Оставить заявку</span>
                 </a>
-
             </div>
             <div class="col-lg-4">
                 <img  src="/media/Frame_4.svg" class="img-fluid img4">
             </div>
         </div>
-    </divid="four">
+    </div>
     <div class="empty-padding"></div>
     <!-- Image 5 -->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6">
-                <img src="/media/Frame_5.svg" class="img-fluid">
-            </div>
-            <div class="col-lg-6 move-down-50">
-                <h2 class="red-text">
-                    <span class="en-text">The first lesson is free</span>
-                    <span class = 'ru-text'>Первый урок бесплатно,</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">to understand your wishes</span>
-                    <span class = 'ru-text'>чтобы понять, что вы</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">and needs</span>
-                    <span class = 'ru-text'>ожидаете от занятий</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class = 'ru-text'>и учесть ваши пожелания</span>
-                </h2>
-            </div>
-        </div>
-    </div>
+    <img style="padding-top: 200px;" class="img-fluid image-top ru-text" src="/media/mr5.svg" >
+    <img  class="img-fluid image-top en-text" src="/media/mee3.svg" >
     <div class="empty-padding"></div>
     <!-- Image 6 -->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-6 move-down-50">
-                <h2 class="red-text">
-                    <span class="en-text">A unique online school</span>
-                    <span class = 'ru-text'>Уникальная онлайн-школа</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">with cool educators who</span>
-                    <span class = 'ru-text'>с крутыми педагогами,</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">understand the psychology</span>
-                    <span class = 'ru-text'>знающими английский язык</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class="en-text">of people. Students trust us.</span>
-                    <span class = 'ru-text'>и понимающими психологию</span>
-                </h2>
-                <h2 class="img-text-bold">
-                    <span class = 'ru-text'>детей. Нам доверяют.</span>
-                </h2>
-            </div>
-            <div class="col-lg-6">
-                <img src="/media/Frame_6.svg" class="img-fluid">
-            </div>
-        </div>
-    </div>
+    <img   style="padding-top: 200px;" class="img-fluid image-top ru-text" src="/media/mr6.svg" >
+    <img  class="img-fluid image-top en-text" src="/media/mee4.svg" >
     <div class="empty-padding"></div>
     <!-- Image 7 -->
-    <div class="container-fluid padding ">
-        <div class="row padding orange-full px-0">
-            <div class="col-lg-6 block-one">
-                <h2 class="red-text">
-                    <span class="en-text">The 1st intro</span>
-                    <span class = 'ru-text'>Вводный урок</span>
-                </h2>
-                <h2 class="red-text">
-                    <span class="en-text">lesson is free</span>
-                    <span class = 'ru-text'>бесплатно</span>
-                </h2>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <h5>
-                    <span class="en-text">to clarify your expectations</span>
-                    <span class = 'ru-text'>Проясним ожидания</span>
-                </h5>
-                <h5>
-                    <span class="en-text">to take account of your wishes</span>
-                    <span class = 'ru-text'>Учтем пожелания</span>
-                </h5>
-                <h5>
-                    <span class="en-text">to determine your level</span>
-                    <span class = 'ru-text'>Определим уровень</span>
-                </h5>
-            </div>
-            <div class="col-lg-3 white limited">
-                <h2 class="img-text-bold">
-                    <span class="en-text">For students</span>
-                    <span class = 'ru-text'>Школьникам</span>
-                </h2>
-                <h5>
-                    <span class="en-text">to improve academic</span>
-                    <span class = 'ru-text'>для повышения</span>
-                </h5>
-                <h5>
-                    <span class="en-text">performance and prepare</span>
-                    <span class = 'ru-text'>успеваемости</span>
-                </h5>
-                <h5>
-                    <span class="en-text">for exams</span>
-                    <span class = 'ru-text'>и подготовке к тестам</span>
-                </h5>
-                <a href="#" type="button" class="btn btn-primary btn-pink-red" data-toggle="modal" data-target="#MyModal">
-                    <span class="en-text">Get started</span>
-                    <span class = 'ru-text'>Оставить заявку</span>
-                </a>
-            </div>
-            <div class="col-lg-3">
-                <img class="image-left" src="/media/Frame_7.svg" class="img-fluid">
-            </div>
-        </div>
+    <div>
+    <img style="position: relative;left: -200px;width: 1510px;" src="/media/mrb.svg" >
+    <img style="position: relative; top: -750px;left: +352px;" src="/media/mrt9.svg" >
+    <img style="position: relative;top: -450px;left: -450px;" src="/media/mq1.svg" >
+    <img style="position: relative;top: -870px;left: +350px;" src="/media/mq2.svg" >
+    <img style="position: relative;top: -870px;left: +375px;" src="/media/mq3.svg" >
     </div>
+    <a href="#" type="button" class="btn btn-primary btn-pink-red" data-toggle="modal" data-target="#MyModal"
+    style="position: relative; top: -952px;left: +772px;">
+        <span class="en-text">Get started</span>
+        <span class ='ru-text'>Оставить заявку</span>
+    </a>
+    <a href="#" type="button" class="btn btn-primary btn-pink-red" data-toggle="modal" data-target="#MyModal"
+    style="position: relative; top: -952px;left: +243px;">
+        <span class="en-text">Get started</span>
+        <span class ='ru-text'>Оставить заявку</span>
+    </a>
+    <a href="#" type="button" class="btn btn-primary btn-pink-red" data-toggle="modal" data-target="#MyModal"
+    style="position: relative; top: -952px;left: -302px;">
+        <span class="en-text">Get started</span>
+        <span class ='ru-text'>Оставить заявку</span>
+    </a>
     <div class="empty-padding"></div>
     <!-- Footer -->
-    <footer>
+    <footer style="position: relative;top: -800px;">
         <div class="container-fluid padding">
             <div class="row text-left">
                 <div class="col-md-4">
@@ -458,27 +292,27 @@
                     </h5>
                     <a class="footer-link" href="#">
                         <span class="en-text">Process</span>
-                        <span class = 'ru-text'>Процесс</span>
+                        <span class = 'ru-text' style="padding: 5px;">Процесс</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Classes</span>
-                        <span class = 'ru-text'>Предметы</span>
+                        <span class = 'ru-text' style="padding: 5px;">Предметы</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Educators</span>
-                        <span class = 'ru-text'>Педагоги</span>
+                        <span class = 'ru-text' style="padding: 5px;">Преподаватели</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">QnA</span>
-                        <span class = 'ru-text'>Вопрос-ответ</span>
+                        <span class = 'ru-text' style="padding: 5px;">Вопрос-ответ</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Price</span>
-                        <span class = 'ru-text'>Цена</span>
+                        <span class = 'ru-text' style="padding: 5px;">Цена</span>
                     </a>
                 </div>
                 <div class="col-md-4">
@@ -488,22 +322,22 @@
                     </h5>
                     <a class="footer-link" href="#">
                         <span class="en-text">About Company</span>
-                        <span class = 'ru-text'>О школе</span>
+                        <span class = 'ru-text'  style="padding: 5px;">О школе</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#"  type="button" data-toggle="modal" data-target="#MyModalT">
                         <span class="en-text">For educators</span>
-                        <span class = 'ru-text'>Педагогам</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Преподавателям</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Reviews</span>
-                        <span class = 'ru-text'>Отзывы</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Отзывы</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Privacy policy</span>
-                        <span class = 'ru-text'>Конфиденциальность</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Конфиденциальность</span>
                     </a>
                 </div>
             </div>

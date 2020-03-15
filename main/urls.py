@@ -28,4 +28,6 @@ urlpatterns = [
     path('survey/tutor/',views.survey_tutor,name="survey-tutor"),
     path('for-students/', views.for_student, name="for-student"),
     path('for-others/',views.for_other,name="for-other"),
+    path('survey/update/',views.survey_update,name="survey-update"),
+    path('yoda',views.yoda,name="yoda"),
 ]

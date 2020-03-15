@@ -96,18 +96,6 @@
                             </h4>
                         {% endif %}
                     {% endfor %}
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;Substances that make up the mixture
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;For example, only distilled water
-                    </h4>
-                    <h4 class="inside-text">
-                        <span class="dot"></span>
-                        &ensp;If no impurities are detected
-                    </h4>
                 </div>
 
                 <h5 class="idea">
@@ -120,44 +108,17 @@
                 <h5 class="idea">
                     <span class="en-text">Formulas</span>
                     <span class = 'ru-text'>ФОРМУЛЫ</span>
+                    <div class="wrapper">
+                        {% for temp in formula %}
+                        <div class="formula-box">
+                            <h4 class="formula-header">{{temp.header}}</h4>
+                            <h3 class="formula-text">{{temp.main}}</h3>
+                            <h5 class="formula-footer">{{temp.footer}}</h5>
+                        </div>
+                    {% endfor %}
+                    </div>
                 </h5>
                 <br/>
-                <div class="wrapper">
-                    <div class="formula-box">
-                        <h4 class="formula-header">
-                            The amount of substance n (mol)
-                        </h4>
-                        <h3 class="formula-text">
-                            n=m/Mr
-                        </h3>
-                        <h5 class="formula-footer">
-                            n=V/22.4 (л/моль)
-                        </h5>
-                    </div>
-                    <div class="formula-box">
-                        <h4 class="formula-header">
-                            The amount of substance n (mol)
-                        </h4>
-                        <h3 class="formula-text">
-                            n=m/Mr
-                        </h3>
-                        <h5 class="formula-footer">
-                            n=V/22.4 (л/моль)
-                        </h5>
-                    </div>
-                    <div class="formula-box">
-                        <h4 class="formula-header">
-                            The amount of substance n (mol)
-                        </h4>
-                        <h3 class="formula-text">
-                            n=m/Mr
-                        </h3>
-                        <h5 class="formula-footer">
-                            n=V/22.4 (л/моль)
-                        </h5>
-                    </div>
-                </div>
-
                 <h5 class="idea">
                     <span class="en-text">Laws</span>
                     <span class = 'ru-text'>ЗАКОНЫ</span>

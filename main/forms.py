@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw, CourseTaken, Homework, HomeworkPoints
+from main.models import Course, Theory, TheoryTask, TheoryGraphic, TheoryFormula, TheoryLaw, CourseTaken, Homework, HomeworkPoints, SurveyStudent, Answer
 
 
 class CourseTakenForm(ModelForm):
@@ -24,6 +24,14 @@ class CourseTakenChangeForm(UserChangeForm):
 
 COURSES = [('chemistry','chemistry'),('physics','physics'),]
 class CourseRegisterForm(ModelForm):
+    name =  forms.CharField(required=True)
+    course_type = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=COURSES,)
+    creator_email = forms.CharField(required=True)
+    class Meta:
+        model = Course
+        fields = ['name','course_type','creator_email']
+
+class CourseChangeForm(UserChangeForm):
     name =  forms.CharField(required=True)
     course_type = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=COURSES,)
     creator_email = forms.CharField(required=True)
@@ -110,6 +118,36 @@ class HomeworkPointsForm(ModelForm):
     class Meta:
         model = HomeworkPoints
         fields = ['point']
+
+class SurveyStudentForm(ModelForm):
+    date = forms.DateField()
+    fio = forms.CharField()
+    subject = forms.CharField()
+    money = forms.CharField()
+    when = forms.CharField()
+    goal = forms.CharField()
+    student_name = forms.CharField()
+    language = forms.CharField()
+    email = forms.HiddenInput()
+    phone = forms.CharField()
+    class Meta:
+        model = SurveyStudent
+        fields = ['date','fio','subject','money','when','goal','student_name','language','phone']
+
+class AnswerForm(ModelForm):
+    one = forms.IntegerField()
+    oneText = forms.CharField()
+    two = forms.IntegerField()
+    twoText = forms.CharField()
+    three = forms.IntegerField()
+    threeText = forms.CharField()
+    fourText = forms.CharField()
+    fiveText = forms.CharField()
+    email = forms.HiddenInput()
+    class Meta:
+        model = Answer
+        fields = ['one','oneText','two','twoText','three','threeText','fourText','fiveText']
+   
 
 
 

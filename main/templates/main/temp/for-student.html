@@ -64,21 +64,33 @@
             </div>
             <div class="col-lg-2">
                 <div class="dropdown for-whom">
-                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">For whom</a>
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+                        <span class="en-text">For whom</span>
+                        <span class = 'ru-text'>Для кого</span>
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="{% url 'for-student' %}" class="dropdown-item">Student</a>
-                        <a href="{% url 'for-other' %}" class="dropdown-item">Other</a>
+                        <a href="{% url 'for-student' %}" class="dropdown-item">
+                            <span class="en-text">Student</span>
+                            <span class = 'ru-text'>Школьникам и студентам</span>
+                        </a>
+                        <a href="{% url 'for-other' %}" class="dropdown-item">
+                            <span class="en-text">Other</span>
+                            <span class = 'ru-text'>Взрослым</span>
+                        </a>
                     </div>
                 </div>
                 
             </div>
             <div class="col-lg-2">
                 <div class="dropdown our-courses">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our courses</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="en-text">Our courses</span>
+                        <span class = 'ru-text'>Наши курсы</span>
+                    </a>
                     <div class="dropdown-menu">
                         <a href="{% url 'math' %}" class="dropdown-item">
                             <span class="en-text">Math</span>
-                            <span class = 'ru-text'>Матиматика</span>
+                            <span class = 'ru-text'>Математика</span>
                         </a>
                         <a href="{% url 'physics' %}" class="dropdown-item">
                             <span class="en-text">Physics</span>
@@ -91,15 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2">
-                <a href="{% url 'courses' %}" class="btn btn-danger btn-sign-in">
-                    <h2 class="to-home-text">
-                        <span class="en-text">Courses</span>
-                        <span class = 'ru-text'>Курсы</span>
-                    </h2>
-                </a>
-            </div>
-
+            <div class="col-lg-2"></div>
             {% if user.is_authenticated %}
             <div class="col-lg-2">
                 <a href="{% url 'logout' %}" class="btn btn-primary btn-sign-in">
@@ -122,15 +126,16 @@
                 <a href="{% url 'login' %}" class="btn btn-primary btn-sign-in">
                     <h2 class="sign-in-text">
                         <span class = 'en-text'>Sign in</span>
-                        <span class = 'ru-text'>Войти</span>
+                        <span class = 'ru-text' style="width: 90;height: 38px; position: relative; top: +10px;">Войти</span>
                     </h2>
                 </a>
             </div>
             <div class="col-lg-2">
-                <a href="{% url 'register' %}" class="btn btn-primary btn-red">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-red" style="border-color: #F04B5D;">
                     <h2 class="btn-red-text">
                         <span class = 'en-text'>Start for free</span>
-                        <span class = 'ru-text'>Начать бесплатно</span>
+                        <span class = 'ru-text' style="position: relative; left: -15px;top: +10px;
+                            width:170px;height: 38px;">Начать бесплатно</span>
                     </h2>
                 </a>
             </div>
@@ -151,7 +156,7 @@
         </h2>
         <h2 class="img-text-bold-4 asd">
             <span class="en-text">between the teacher</span>
-            <span class = 'ru-text'>с PRO2</span>
+            <span class = 'ru-text'>с <span style="color:#F04B5D;">PRO2</span></span>
         </h2>
         <br/>
         <br/>
@@ -166,7 +171,7 @@
         <br/>
         <a href="{% url 'courses' %}" class="btn btn-primary btn-red-submit" type="button" data-toggle="modal" data-target="#MyModal">
             <span class="en-text">Submit application</span>
-            <span class = 'ru-text'>Оставить заявку на пробный урок</span>
+            <span class = 'ru-text' style="width:293px;height:48px;position:relative;top:+9px;">Оставить заявку на пробный урок</span>
         </a>
     </div>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -178,7 +183,7 @@
     <br/>
     <div class="container-fluid padding ">
         <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
-            <div class="col-lg-6 block-one">
+            <div class="col-lg-5 block-one" style="padding-left: 64px;">
                 <h2 class="img-text-bold-4 move-down-50" >
                     <span class="en-text">The trust should be built</span>
                     <span class = 'ru-text'>Запишитесь</span>
@@ -188,31 +193,31 @@
                     <span class = 'ru-text'>на пробный урок</span>
                 </h2>
             </div>
-            <div class="col-lg-6 block-one" style="padding-top: 75px;">
-                <form method="POST">
+            <div class="col-lg-7 block-one" style="padding-top: 75px;">
+                <form method="POST" style="position: relative;top:-25px;">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                        <input required style="width: 505px;height: 48px;" name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
                     </div>
                     <div class="form-group">
-                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                        <input required  style="width: 505px;height: 48px;" name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
                     </div>
                     <div class="form-group">
-                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                        <input required style="width: 505px;height: 48px;" name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
                     </div>
                     <div class="d-inline-block" >
                         <small class="text-muted">
                                 <span class="en-text">фыв</span>
-                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <span class = 'ru-text' style="padding-top: 15px;">Нажимая на кнопку отправить, вы даете</span>
                                 <br/>
                                 <span class="en-text">фыв</span>
-                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                                <span class = 'ru-text'>согласие на обработку <b>персональных данных</b></span>
                         </small>
                     </div>
                     <div class="d-inline-block" style="padding-left: 50px;">
-                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                    <button type="submit" style="position:relative;top:-15px;left:-45px;" class="btn btn-primary btn-red-submit d-inline-block">
                         <span class="en-text">submit</span>
-                        <span class = 'ru-text'>Оставить заявку</span>
+                        <span class = 'ru-text' style="width: 190px;height:48px;position: relative;top: +12px;">Оставить заявку</span>
                     </button>
                     </div>
                 </form>
@@ -235,37 +240,41 @@
 
     <div class="container-fluid padding ">
         <div class="row padding orange-full px-0" style="width: 1109px; height: 362px; left: 406px; top: 2339px;">
-            <div class="col-lg-6 block-one">
+            <div class="col-lg-5 block-one" style="padding-left: 64px;">
                 <h2 class="img-text-bold-4 move-down-50" >
                     <span class="en-text">The trust should be built</span>
                     <span class = 'ru-text'>Все, иду на пробный урок</span>
                 </h2>
+                <h2 class="img-text-bold-4">
+                    <span class="en-text">between the teacher</span>
+                    <span class = 'ru-text'></span>
+                </h2>
             </div>
-            <div class="col-lg-6 block-one" style="padding-top: 75px;">
-                <form method="POST">
+            <div class="col-lg-7 block-one" style="padding-top: 75px;">
+                <form method="POST" style="position: relative;top:-25px;">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input required name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
+                        <input required style="width: 505px;height: 48px;" name ="user_phone" type="input-group-text" class="form-control" placeholder="Телефон" >
                     </div>
                     <div class="form-group">
-                        <input required  name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
+                        <input required  style="width: 505px;height: 48px;" name ="user_name" type="input-group-text" class="form-control" placeholder="Ваше имя" >
                     </div>
                     <div class="form-group">
-                        <input required name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
+                        <input required style="width: 505px;height: 48px;" name ="user_email" type="email" class="form-control" placeholder="Электронная почта" id="email">
                     </div>
                     <div class="d-inline-block" >
                         <small class="text-muted">
                                 <span class="en-text">фыв</span>
-                                <span class = 'ru-text'>Нажимая на кнопку отправить, вы даете</span>
+                                <span class = 'ru-text' style="padding-top: 15px;">Нажимая на кнопку отправить, вы даете</span>
                                 <br/>
                                 <span class="en-text">фыв</span>
-                                <span class = 'ru-text'>согласие на обработку персональных данных</span>
+                                <span class = 'ru-text'>согласие на обработку <b>персональных данных</b></span>
                         </small>
                     </div>
                     <div class="d-inline-block" style="padding-left: 50px;">
-                    <button type="submit" class="btn btn-primary btn-red-submit d-inline-block">
+                    <button type="submit" style="position:relative;top:-15px;left:-45px;" class="btn btn-primary btn-red-submit d-inline-block">
                         <span class="en-text">submit</span>
-                        <span class = 'ru-text'>Оставить заявку</span>
+                        <span class = 'ru-text' style="width: 190px;height:48px;position: relative;top: +12px;">Оставить заявку</span>
                     </button>
                     </div>
                 </form>
@@ -274,7 +283,7 @@
     </div>
     <br/><br/><br/><br/><br/>
     <!-- Footer -->
-    <footer>
+    <footer style="position: relative;top: -1px;">
         <div class="container-fluid padding">
             <div class="row text-left">
                 <div class="col-md-4">
@@ -288,27 +297,27 @@
                     </h5>
                     <a class="footer-link" href="#">
                         <span class="en-text">Process</span>
-                        <span class = 'ru-text'>Процесс</span>
+                        <span class = 'ru-text' style="padding: 5px;">Процесс</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Classes</span>
-                        <span class = 'ru-text'>Предметы</span>
+                        <span class = 'ru-text' style="padding: 5px;">Предметы</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Educators</span>
-                        <span class = 'ru-text'>Педагоги</span>
+                        <span class = 'ru-text' style="padding: 5px;">Преподаватели</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">QnA</span>
-                        <span class = 'ru-text'>Вопрос-ответ</span>
+                        <span class = 'ru-text' style="padding: 5px;">Вопрос-ответ</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Price</span>
-                        <span class = 'ru-text'>Цена</span>
+                        <span class = 'ru-text' style="padding: 5px;">Цена</span>
                     </a>
                 </div>
                 <div class="col-md-4">
@@ -318,22 +327,22 @@
                     </h5>
                     <a class="footer-link" href="#">
                         <span class="en-text">About Company</span>
-                        <span class = 'ru-text'>О школе</span>
+                        <span class = 'ru-text'  style="padding: 5px;">О школе</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#"  type="button" data-toggle="modal" data-target="#MyModalT">
                         <span class="en-text">For educators</span>
-                        <span class = 'ru-text'>Педагогам</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Преподавателям</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Reviews</span>
-                        <span class = 'ru-text'>Отзывы</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Отзывы</span>
                     </a>
                     <br/>
                     <a class="footer-link" href="#">
                         <span class="en-text">Privacy policy</span>
-                        <span class = 'ru-text'>Конфиденциальность</span>
+                        <span class = 'ru-text'  style="padding: 5px;">Конфиденциальность</span>
                     </a>
                 </div>
             </div>

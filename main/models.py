@@ -125,13 +125,16 @@ class HomeworkPoints(models.Model):
         return ""+self.course_name+"-"+self.points
 
 class SurveyStudent(models.Model):
-    email = models.CharField(max_length=250, default="empty")
-    student_name = models.CharField(max_length=100)
-    client_name = models.CharField(max_length=100)
-    goal = models.CharField(max_length=1000)
+    date = models.DateField(_("Date"), default=datetime.date.today)
+    fio = models.CharField(max_length=250, default="empty")
     subject = models.CharField(max_length=500)
     money = models.CharField(max_length=500)
-    date = models.DateField(_("Date"), default=datetime.date.today)
+    when =  models.CharField(max_length=500)
+    goal = models.CharField(max_length=1000)
+    student_name = models.CharField(max_length=100)
+    language = models.CharField(max_length=100)
+    email = models.CharField(max_length=250, default="empty")
+    phone = models.CharField(max_length=100)
     class Meta:
         get_latest_by = 'date'
     def __str__(self):
@@ -139,13 +142,25 @@ class SurveyStudent(models.Model):
 
 class SurveyTutor(models.Model):
     email = models.CharField(max_length=250, default="empty")
-    date = models.DateField(_("Date"), default=datetime.date.today)
-    money = models.CharField(max_length=500)
-    rec = models.CharField(max_length=500)
+    subjects = models.CharField(max_length=250, default="empty")
+    university = models.CharField(max_length=250, default="empty")
+    experience = models.CharField(max_length=250, default="empty")
+    price = models.CharField(max_length=250, default="empty")
+    time = models.CharField(max_length=250, default="empty")
     class Meta:
         get_latest_by = 'date'
     def __str__(self):
         return ""+self.email+"-"+self.money+"-"+self.rec
+
+class Answer(models.Model):
+    answerOne = models.IntegerField()
+    answerOneText = models.CharField(max_length=250, default="empty")
+    answerTwo = models.IntegerField()
+    answerTwoText = models.CharField(max_length=250, default="empty")
+    answerThree = models.IntegerField()
+    answerThreeText = models.CharField(max_length=250, default="empty")
+    answerFourText = models.CharField(max_length=250, default="empty")
+    answerFiveText = models.CharField(max_length=250, default="empty")
 
     
       

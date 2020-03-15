@@ -69,8 +69,8 @@
 
 	{
 		"SECRET_KEY": "3s8**sa4+wq-go-a(9euf#avt-cj&fj&a-ck)_diuk(p6dff_k",
-		"EMAIL_USER": "askhat.kenenbay@gmail.com",
-		"EMAIL_PASS": "Askhat255899"
+		"EMAIL_USER": "",
+		"EMAIL_PASS": ""
 	}
 
 48	sudo nano pro2_project/pro2_project/settings.py
@@ -90,20 +90,16 @@
 55	sudo service apache2 restart
 
 
+copy to local
+
+scp -i /directory/to/abc.pem /your/local/file/to/copy user@ec2-xx-xx-xxx-xxx.compute-1.amazonaws.com:path/to/file
+
+scp -i C:/users/Askhat/Desktop/PRO2/ElonPro2.pem ubuntu@ec2-3-9-173-128.eu-west-2.compute.amazonaws.com:~/c/thread.c C:/users/Askhat/Desktop
 
 
+scp -i C:/users/Askhat/Desktop/PRO2/ElonPro2.pem -r media ubuntu@ec2-3-9-173-128.eu-west-2.compute.amazonaws.com:~/pro2_project
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Database
+In every restart of server download database db.sqlite3 so that everything uploaded to server dont get lost and replace your local database with one in server.
 	

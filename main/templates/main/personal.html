@@ -21,6 +21,10 @@
                 <span class="en-text">&ensp; My account</span>
                 <span class = 'ru-text'>&ensp;Личный кабинет</span>
             </a>
+            <a href="{% url 'yoda' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
+                <span class="en-text">&ensp; My account</span>
+                <span class = 'ru-text'>&ensp;Отзыв</span>
+            </a>
             {% if user.is_god %}
                 <a href="{% url 'create-course' %}" class="btn btn-primary btn-custom"><img class="rounded-circle account-img custom-img-xs" src="/media/circle.png">
                     <span class="en-text">&ensp; Create Course</span>

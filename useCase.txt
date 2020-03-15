@@ -1,0 +1,13 @@
+Administrator goes to pro2edtech.com/admin page, login: super@gmail.com		password: Super1188
+Can interact with user via Persons, check in person_type: if on user is teacher, else student.
+Check in is_paid: if on user paid at to at least one course else not
+Check in is_good: if on user can create course, else not
+
+Administrator can add user to course via CourseTaken where he/she needs to input user email and name of the course, check in is_paid if user paid to course.
+Administrator can add Course, Theory, TheoryTask,TheoryGraphic,TheoryFormula,TheoryLaw
+Administrator can look at Course, Theory, TheoryTask,TheoryGraphic,TheoryFormula,TheoryLaw
+Administrator can add new parts to Course, Theory, TheoryTask,TheoryGraphic,TheoryFormula,TheoryLaw
+
+Can look to answers via Answers, can look to survey of students via Survey students, can look to survey of tutors via Survey tutors.
+
+Regular user and teacher register via website. Access granted by administrator.
