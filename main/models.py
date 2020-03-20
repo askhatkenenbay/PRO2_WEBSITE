@@ -162,6 +162,10 @@ class Answer(models.Model):
     answerFourText = models.CharField(max_length=250, default="empty")
     answerFiveText = models.CharField(max_length=250, default="empty")
 
+class Cta(models.Model):
+    name = models.CharField(max_length=250, default="empty")
+    age = models.IntegerField()
+
     
       
 

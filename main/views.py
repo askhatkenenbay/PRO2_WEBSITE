@@ -197,9 +197,9 @@ def create_theory_graphic(request):
             form.cleaned_data['creator_email'] = request.session.get('person_id')
             form.cleaned_data['course_name'] = request.session.get('course_name')
             form.cleaned_data['theory_name'] = request.session.get('theory_name')
-            # form.save()
-            temp=TheoryGraphic(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],order=form.cleaned_data['order'],graphic=form.cleaned_data['image'])
-            temp.save()
+            form.save()
+            # temp=TheoryGraphic(creator_email=form.cleaned_data['creator_email'],course_name=form.cleaned_data['course_name'],theory_name=form.cleaned_data['theory_name'],order=form.cleaned_data['order'],graphic=form.cleaned_data['image'])
+            # temp.save()
             messages.success(request, f'You created theory-graphic')
             return redirect('create-theory-graphic')
     else:
