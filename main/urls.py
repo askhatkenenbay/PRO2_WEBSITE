@@ -30,5 +30,5 @@ urlpatterns = [
     path('for-others/',views.for_other,name="for-other"),
     path('survey/update/',views.survey_update,name="survey-update"),
     path('yoda',views.yoda,name="yoda"),
-    path('myWay/',views.myway,name="myWay")
+    #path('myWay/',views.myway,name="myWay")
 ]
